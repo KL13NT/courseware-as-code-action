@@ -2,6 +2,19 @@
   <a href="https://github.com/actions/typescript-action/actions"><img alt="typescript-action status" src="https://github.com/actions/typescript-action/workflows/build-test/badge.svg"></a>
 </p>
 
+# Steps of installation and usage
+- Commit changes and push to github
+- Execute action
+- Checkout content repo 
+- Install nodejs and npm
+- Read config if any, otherwise use defaults
+- Fetch template and unzip in cwd/projectname 
+- Copy collections from repo into template folder
+- cd into template folder
+- install npm dependencies
+- run build script to generate static content using next 
+- publish to github pages by default 
+
 # Create a JavaScript Action using TypeScript
 
 Use this template to bootstrap the creation of a TypeScript action.:rocket:
