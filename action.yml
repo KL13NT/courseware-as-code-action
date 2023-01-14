@@ -1,11 +1,48 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: "courseware-as-code"
+description: "Automate collaborative courseware maintenance"
+author: "Nabil Tharwat"
 inputs:
-  milliseconds: # change this
+  courseName:
     required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+    description: "Course name"
+  campusName:
+    required: true
+    description: "Campus name"
+  generateLecturePDF:
+    required: false
+    description: "Whether to generate pdf lectures"
+    default: false
+  enablePdfSlides:
+    required: false
+    description: "Whether to generate pdf lectures"
+    default: false
+  courseCode:
+    required: false
+    description: "Course code"
+  courseDescription:
+    required: false
+    description: "Course description"
+  campusWebsite:
+    required: false
+    description: "Campus website"
+  highlightLanguages:
+    required: false
+    description: "Array of languages for code highlighting"
+    default:
+      - javascript
+      - typescript
+
 runs:
-  using: 'node16'
-  main: 'dist/index.js'
+  using: "composite"
+  steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 16
+    - run: node ./dist/index.js
+      shell: bash
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./template/out

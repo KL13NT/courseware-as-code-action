@@ -1,43 +1,90 @@
 {
-  "name": "typescript-action",
-  "version": "0.0.0",
-  "private": true,
-  "description": "TypeScript template action",
-  "main": "lib/main.js",
-  "scripts": {
-    "build": "tsc",
-    "format": "prettier --write '**/*.ts'",
-    "format-check": "prettier --check '**/*.ts'",
-    "lint": "eslint src/**/*.ts",
-    "package": "ncc build --source-map --license licenses.txt",
-    "test": "jest",
-    "all": "npm run build && npm run format && npm run lint && npm run package && npm test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/actions/typescript-action.git"
-  },
-  "keywords": [
-    "actions",
-    "node",
-    "setup"
-  ],
-  "author": "",
-  "license": "MIT",
-  "dependencies": {
-    "@actions/core": "^1.6.0"
-  },
-  "devDependencies": {
-    "@types/node": "^16.10.5",
-    "@typescript-eslint/parser": "^5.8.1",
-    "@vercel/ncc": "^0.31.1",
-    "eslint": "^7.32.0",
-    "eslint-plugin-github": "^4.3.2",
-    "eslint-plugin-jest": "^25.3.2",
-    "jest": "^27.2.5",
-    "js-yaml": "^4.1.0",
-    "prettier": "2.5.1",
-    "ts-jest": "^27.1.2",
-    "typescript": "^4.4.4"
-  }
+	"name": "courseware-as-code-github-action",
+	"version": "0.0.0",
+	"private": true,
+	"description": "Automate collaborative courseware maintenance and production with ease!",
+	"exports": "./dist/index.js",
+	"engines": {
+		"node": ">=14.16"
+	},
+	"scripts": {
+		"build": "tsc && resolve-tspaths",
+		"format": "prettier --write '**/*.ts'",
+		"format-check": "prettier --check '**/*.ts'",
+		"lint": "eslint src/**/*.ts",
+		"package": "ncc build dist/index.js --source-map --license licenses.txt -o dist",
+		"test": "jest jest --colors --expand --logHeapUsage --config jest.config.js --verbose",
+		"prerelease": "npm run lint && npm run test",
+		"release": "npm run build && npm run package"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/actions/typescript-action.git"
+	},
+	"keywords": [
+		"actions",
+		"node",
+		"setup"
+	],
+	"author": "",
+	"license": "MIT",
+	"dependencies": {
+		"@actions/core": "^1.6.0",
+		"@fullhuman/postcss-purgecss": "^4.1.3",
+		"@marp-team/marp-core": "^3.3.2",
+		"@mdx-js/loader": "^2.1.2",
+		"@next/mdx": "^12.2.5",
+		"@types/tar": "^6.1.3",
+		"autoprefixer": "^10.4.8",
+		"find-up": "^6.3.0",
+		"fs-extra": "^10.1.0",
+		"got": "^12.5.3",
+		"gray-matter": "^4.0.3",
+		"mime-types": "^2.1.35",
+		"next": "^12.2.5",
+		"node-sass": "^7.0.1",
+		"postcss": "^8.4.16",
+		"postcss-flexbugs-fixes": "^5.0.2",
+		"postcss-preset-env": "^7.7.2",
+		"puppeteer": "^16.1.0",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"rehype-highlight": "^4.0.1",
+		"rehype-katex": "^5.0.0",
+		"rehype-stringify": "^8.0.0",
+		"remark-math": "^4.0.0",
+		"remark-parse": "^9.0.0",
+		"remark-rehype": "^8.1.0",
+		"tailwindcss": "^3.1.8",
+		"tar": "^6.1.13",
+		"to-vfile": "^6.1.0",
+		"typescript": "^4.7.4",
+		"unified": "^9.2.1"
+	},
+	"devDependencies": {
+		"@swc/cli": "^0.1.57",
+		"@swc/core": "^1.2.231",
+		"@types/fs-extra": "^9.0.13",
+		"@types/jest": "^27.5.2",
+		"@types/mime-types": "^2.1.1",
+		"@types/node": "^16.10.5",
+		"@types/puppeteer": "^5.4.6",
+		"@types/react": "^18.0.17",
+		"@types/react-dom": "^18.0.6",
+		"@typescript-eslint/parser": "^5.8.1",
+		"@vercel/ncc": "^0.31.1",
+		"eslint": "^7.32.0",
+		"eslint-import-resolver-typescript": "^3.4.1",
+		"eslint-plugin-github": "^4.3.2",
+		"eslint-plugin-import": "^2.26.0",
+		"eslint-plugin-jest": "^25.3.2",
+		"eslint-plugin-jsx-a11y": "^6.6.1",
+		"eslint-plugin-react": "^7.30.1",
+		"jest": "^27.2.5",
+		"js-yaml": "^4.1.0",
+		"prettier": "2.5.1",
+		"resolve-tspaths": "^0.7.4",
+		"ts-jest": "^27.1.2",
+		"ts-node": "^10.9.1"
+	}
 }

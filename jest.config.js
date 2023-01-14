@@ -1,9 +1,14 @@
 module.exports = {
-  clearMocks: true,
-  moduleFileExtensions: ['js', 'ts'],
-  testMatch: ['**/*.test.ts'],
-  transform: {
-    '^.+\\.ts$': 'ts-jest'
-  },
-  verbose: true
-}
+	clearMocks: true,
+	moduleFileExtensions: ["js", "ts"],
+	transform: {
+		"^.+\\.ts$": "ts-jest",
+	},
+	verbose: true,
+	coverageDirectory: "./coverage",
+	testEnvironment: "node",
+	collectCoverageFrom: ["./src/lib/**/*.js"],
+	coverageReporters: ["json-summary", "html", "text", "lcov"],
+	testMatch: ["./**/*.test.ts"],
+	setupFilesAfterEnv: ["./jest.setup.js"],
+};
