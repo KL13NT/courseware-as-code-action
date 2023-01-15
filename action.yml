@@ -1,36 +1,6 @@
 name: "courseware-as-code"
 description: "Automate collaborative courseware maintenance"
 author: "Nabil Tharwat"
-inputs:
-  courseName:
-    required: true
-    description: "Course name"
-  campusName:
-    required: true
-    description: "Campus name"
-  generateLecturePDF:
-    required: false
-    description: "Whether to generate pdf lectures"
-    default: false
-  enablePdfSlides:
-    required: false
-    description: "Whether to generate pdf lectures"
-    default: false
-  courseCode:
-    required: false
-    description: "Course code"
-  courseDescription:
-    required: false
-    description: "Course description"
-  campusWebsite:
-    required: false
-    description: "Campus website"
-  highlightLanguages:
-    required: false
-    description: "Array of languages for code highlighting"
-    default:
-      - javascript
-      - typescript
 
 runs:
   using: "composite"

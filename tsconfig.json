@@ -1,53 +1,32 @@
 {
-  "compilerOptions": {
-    "jsx": "preserve",
-    "target": "es6",
-    "moduleResolution": "node",
-    "module": "CommonJS",
-    "outDir": "./dist",
-    "strict": true,
-    "noImplicitAny": true,
-    "esModuleInterop": true,
-    "strictNullChecks": true,
-    "baseUrl": ".",
-    "paths": {
-      "components/*": [
-        "./src/components/*"
-      ],
-      "lib/*": [
-        "./src/lib/*"
-      ],
-      "pages/*": [
-        "./src/pages/*"
-      ],
-      "scripts/*": [
-        "./src/scripts/*"
-      ],
-      "interfaces/*": [
-        "src/interfaces/*"
-      ]
-    },
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
-    "incremental": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true
-  },
-  "exclude": [
-    "node_modules",
-    "**/*.js",
-    "**/*.test.ts"
-  ],
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx"
-  ]
+	"compilerOptions": {
+		"jsx": "preserve",
+		"module": "ES2022",
+		"outDir": "./out",
+		"target": "es2015",
+		"moduleResolution": "node",
+		"strict": true,
+		"noImplicitAny": true,
+		"esModuleInterop": true,
+		"strictNullChecks": true,
+		"baseUrl": ".",
+		"paths": {
+			"components/*": ["./src/components/*"],
+			"lib/*": ["./src/lib/*"],
+			"pages/*": ["./src/pages/*"],
+			"scripts/*": ["./src/scripts/*"],
+			"interfaces/*": ["src/interfaces/*"]
+		},
+		"lib": ["dom", "dom.iterable", "esnext"],
+		"allowJs": true,
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true,
+		"noEmit": false,
+		"incremental": true,
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"allowSyntheticDefaultImports": true
+	},
+	"exclude": ["node_modules", "**/*.js", "**/*.test.ts"],
+	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
 }

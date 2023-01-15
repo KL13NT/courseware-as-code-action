@@ -97,3 +97,10 @@ Thumbs.db
 # Ignore built ts files
 __tests__/runner/*
 lib/**/*
+
+# test collection files
+collections/
+
+# Ignore output files
+dist/
+out/

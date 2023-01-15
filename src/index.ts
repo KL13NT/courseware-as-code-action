@@ -36,16 +36,6 @@ async function run(): Promise<void> {
 			force: true,
 		});
 
-		// if (generateLecturePDF) {
-		// 	core.info("generating pdf lectures");
-		// 	await generateLectures();
-		// }
-
-		// if (enablePdfSlides) {
-		// 	core.info("generating pdf presentations");
-		// 	await generatePresentations();
-		// }
-
 		core.info("cd into template directory");
 		process.chdir(TEMPLATE_DIR);
 
@@ -53,10 +43,10 @@ async function run(): Promise<void> {
 		execSync("npm install --save-exact");
 
 		core.info("building website");
-		execSync("npx next build");
+		execSync("npm run build");
 
 		core.info("exporting website");
-		execSync("npx next export");
+		execSync("npm run export");
 
 		// core.info("outputting files to project out directory");
 		// const temp = fs.readdirSync(NEXT_OUT_DIR);
@@ -78,15 +68,6 @@ async function run(): Promise<void> {
 				"Build failed. If you think this is a mistake please report it on the github issues page."
 			);
 		}
-	} finally {
-		core.info("Cleanup");
-
-		// fs.rmdirSync(path.resolve(__dirname, "../public"), {
-		// 	recursive: true,
-		// });
-
-		core.info("Cleanup done");
-		process.exit(0);
 	}
 }
 

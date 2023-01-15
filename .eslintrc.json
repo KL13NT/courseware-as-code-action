@@ -1,10 +1,6 @@
 {
-	"plugins": ["jest", "@typescript-eslint", "react", "jsx-a11y", "import"],
-	"extends": [
-		"plugin:github/recommended",
-		"plugin:react/recommended",
-		"plugin:jsx-a11y/recommended"
-	],
+	"plugins": ["@typescript-eslint", "import"],
+	"extends": ["plugin:github/recommended"],
 	"ignorePatterns": ["**/*.js"],
 	"settings": {
 		"import/resolver": {
@@ -17,21 +13,10 @@
 		"sourceType": "module",
 		"project": "./tsconfig.json",
 		"ecmaFeatures": {
-			"jsx": true,
 			"modules": true,
 			"experimentalObjectRestSpread": true
 		},
-		"requireConfigFile": false,
-		"babelOptions": {
-			"presets": [
-				[
-					"@babel/preset-react",
-					{
-						"runtime": "automatic"
-					}
-				]
-			]
-		}
+		"requireConfigFile": false
 	},
 	"rules": {
 		"filenames/match-regex": 0,
