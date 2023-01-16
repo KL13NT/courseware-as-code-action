@@ -102,5 +102,4 @@ lib/**/*
 collections/
 
 # Ignore output files
-dist/
 out/

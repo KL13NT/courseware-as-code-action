@@ -4,7 +4,6 @@ import { execSync } from "child_process";
 import * as core from "@actions/core";
 
 import {
-	OUTPUT_DIR,
 	LECTURES_DIR,
 	COLLECTIONS_DIR,
 	TEMPLATE_DIR,
@@ -19,10 +18,6 @@ async function run(): Promise<void> {
 		);
 		core.info("Creating temporary and final build directory");
 
-		if (!fs.existsSync(OUTPUT_DIR)) {
-			fs.mkdirSync(OUTPUT_DIR, { recursive: true });
-		}
-
 		if (!fs.existsSync(LECTURES_DIR)) {
 			throw new Error(
 				'Lectures directory does not exist. Please create a "collections/lectures" directory in the root of your repo.'
@@ -36,17 +31,20 @@ async function run(): Promise<void> {
 			force: true,
 		});
 
-		core.info("cd into template directory");
-		process.chdir(TEMPLATE_DIR);
-
 		core.info("install template npm dependencies");
-		execSync("npm install --save-exact");
+		execSync("npm install --save-exact", {
+			cwd: TEMPLATE_DIR,
+		});
 
 		core.info("building website");
-		execSync("npm run build");
+		execSync("npm run build", {
+			cwd: TEMPLATE_DIR,
+		});
 
 		core.info("exporting website");
-		execSync("npm run export");
+		execSync("npm run export", {
+			cwd: TEMPLATE_DIR,
+		});
 
 		// core.info("outputting files to project out directory");
 		// const temp = fs.readdirSync(NEXT_OUT_DIR);
