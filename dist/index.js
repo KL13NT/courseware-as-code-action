@@ -13403,8 +13403,8 @@ const LECTURES_DIR = external_path_default().resolve(process.cwd(), "collections
 const SLIDES_DIR = external_path_default().resolve(process.cwd(), "collections/slides");
 const TEMP_DIR = external_path_default().resolve(process.cwd(), ".temp");
 const OUTPUT_DIR = external_path_default().resolve(process.cwd(), "out");
-const TEMPLATE_DIR = external_path_default().resolve(process.cwd(), "template");
-const TEMPLATE_COLLECTIONS_DIR = external_path_default().resolve(process.cwd(), "template/collections");
+const TEMPLATE_DIR = external_path_default().resolve(process.cwd(), "courseware-as-code-template-master");
+const TEMPLATE_COLLECTIONS_DIR = external_path_default().resolve(process.cwd(), "courseware-as-code-template-master/collections");
 const TEMPLATE_REPO = "https://codeload.github.com/kl13nt/courseware-as-code-template/tar.gz/master";
 
 ;// CONCATENATED MODULE: ./node_modules/@sindresorhus/is/dist/index.js
@@ -19281,7 +19281,7 @@ function downloadAndExtractTemplate() {
         }
         yield tar.x({
             file: tempFile,
-            cwd: TEMPLATE_DIR,
+            cwd: process.cwd(),
         });
         yield (0,promises_namespaceObject.unlink)(tempFile);
     });
@@ -19306,26 +19306,32 @@ function run() {
     return src_awaiter(this, void 0, void 0, function* () {
         try {
             core.info("Courseware as code is built by Nabil Tharwat. For support visit the GitHub issues page.");
-            core.info("Creating temporary and final build directory");
-            if (!external_fs_default().existsSync(OUTPUT_DIR)) {
-                external_fs_default().mkdirSync(OUTPUT_DIR, { recursive: true });
-            }
             if (!external_fs_default().existsSync(LECTURES_DIR)) {
                 throw new Error('Lectures directory does not exist. Please create a "collections/lectures" directory in the root of your repo.');
             }
             yield downloadAndExtractTemplate();
+            core.info((0,external_child_process_namespaceObject.execSync)("ls", { cwd: TEMPLATE_DIR }).toString());
             (0,external_fs_.cpSync)(COLLECTIONS_DIR, TEMPLATE_COLLECTIONS_DIR, {
                 recursive: true,
                 force: true,
             });
-            core.info("cd into template directory");
-            process.chdir(TEMPLATE_DIR);
+            // eslint-disable-next-line no-console
+            console.log((0,external_child_process_namespaceObject.execSync)("ls", {
+                cwd: TEMPLATE_DIR,
+            }).toString());
             core.info("install template npm dependencies");
-            (0,external_child_process_namespaceObject.execSync)("npm install --save-exact");
+            (0,external_child_process_namespaceObject.execSync)("npm ci --legacy-peer-deps", {
+                cwd: TEMPLATE_DIR,
+            });
             core.info("building website");
-            (0,external_child_process_namespaceObject.execSync)("npm run build");
+            const buildOutput = (0,external_child_process_namespaceObject.execSync)("npx next build", {
+                cwd: TEMPLATE_DIR,
+            }).toString();
+            core.info(buildOutput);
             core.info("exporting website");
-            (0,external_child_process_namespaceObject.execSync)("npm run export");
+            (0,external_child_process_namespaceObject.execSync)("npm run export", {
+                cwd: TEMPLATE_DIR,
+            });
             // core.info("outputting files to project out directory");
             // const temp = fs.readdirSync(NEXT_OUT_DIR);
             // for (const filename of temp) {

@@ -16,7 +16,6 @@ async function run(): Promise<void> {
 		core.info(
 			"Courseware as code is built by Nabil Tharwat. For support visit the GitHub issues page."
 		);
-		core.info("Creating temporary and final build directory");
 
 		if (!fs.existsSync(LECTURES_DIR)) {
 			throw new Error(
@@ -26,20 +25,31 @@ async function run(): Promise<void> {
 
 		await downloadAndExtractTemplate();
 
+		core.info(execSync("ls", { cwd: TEMPLATE_DIR }).toString());
+
 		cpSync(COLLECTIONS_DIR, TEMPLATE_COLLECTIONS_DIR, {
 			recursive: true,
 			force: true,
 		});
 
+		// eslint-disable-next-line no-console
+		console.log(
+			execSync("ls", {
+				cwd: TEMPLATE_DIR,
+			}).toString()
+		);
+
 		core.info("install template npm dependencies");
-		execSync("npm install --save-exact", {
+		execSync("npm ci --legacy-peer-deps", {
 			cwd: TEMPLATE_DIR,
 		});
 
 		core.info("building website");
-		execSync("npm run build", {
+		const buildOutput = execSync("npx next build", {
 			cwd: TEMPLATE_DIR,
-		});
+		}).toString();
+
+		core.info(buildOutput);
 
 		core.info("exporting website");
 		execSync("npm run export", {

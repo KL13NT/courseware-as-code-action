@@ -30,7 +30,7 @@ export async function downloadAndExtractTemplate() {
 
 	await tar.x({
 		file: tempFile,
-		cwd: TEMPLATE_DIR,
+		cwd: process.cwd(),
 	});
 
 	await unlink(tempFile);
