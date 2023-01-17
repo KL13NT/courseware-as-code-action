@@ -9,6 +9,7 @@ import {
 	TEMPLATE_DIR,
 	TEMPLATE_COLLECTIONS_DIR,
 	CONFIG_PATH,
+	TEMPLATE_CONFIG_PATH,
 } from "lib/constants";
 import { downloadAndExtractTemplate } from "lib/http";
 import { logger } from "lib/logger";
@@ -34,7 +35,7 @@ async function run(): Promise<void> {
 		});
 
 		logger.info("Copying config");
-		cpSync(CONFIG_PATH, TEMPLATE_DIR, {
+		cpSync(CONFIG_PATH, TEMPLATE_CONFIG_PATH, {
 			force: true,
 		});
 

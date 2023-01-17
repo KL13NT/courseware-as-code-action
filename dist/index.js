@@ -13398,13 +13398,14 @@ var external_path_ = __nccwpck_require__(1017);
 var external_path_default = /*#__PURE__*/__nccwpck_require__.n(external_path_);
 ;// CONCATENATED MODULE: ./src/lib/constants.ts
 
-const COLLECTIONS_DIR = external_path_default().resolve(process.cwd(), "collections");
-const LECTURES_DIR = external_path_default().resolve(process.cwd(), "collections/lectures");
+const COLLECTIONS_DIR = __nccwpck_require__.ab + "collections";
+const LECTURES_DIR = __nccwpck_require__.ab + "lectures";
 const SLIDES_DIR = external_path_default().resolve(process.cwd(), "collections/slides");
 const TEMP_DIR = external_path_default().resolve(process.cwd(), ".temp");
 const OUTPUT_DIR = external_path_default().resolve(process.cwd(), "out");
 const TEMPLATE_DIR = external_path_default().resolve(process.cwd(), "courseware-as-code-template-master");
-const CONFIG_PATH = external_path_default().resolve(process.cwd(), "cac.config.json");
+const CONFIG_PATH = __nccwpck_require__.ab + "cac.config.json";
+const TEMPLATE_CONFIG_PATH = external_path_default().resolve(`${TEMPLATE_DIR}/cac.config.json`);
 const TEMPLATE_COLLECTIONS_DIR = external_path_default().resolve(process.cwd(), "courseware-as-code-template-master/collections");
 const TEMPLATE_REPO = "https://codeload.github.com/kl13nt/courseware-as-code-template/tar.gz/master";
 
@@ -19335,7 +19336,7 @@ function run() {
                 force: true,
             });
             logger.info("Copying config");
-            (0,external_fs_.cpSync)(CONFIG_PATH, TEMPLATE_DIR, {
+            (0,external_fs_.cpSync)(CONFIG_PATH, TEMPLATE_CONFIG_PATH, {
                 force: true,
             });
             logger.info("Installing template npm dependencies");
