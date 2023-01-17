@@ -13404,6 +13404,7 @@ const SLIDES_DIR = external_path_default().resolve(process.cwd(), "collections/s
 const TEMP_DIR = external_path_default().resolve(process.cwd(), ".temp");
 const OUTPUT_DIR = external_path_default().resolve(process.cwd(), "out");
 const TEMPLATE_DIR = external_path_default().resolve(process.cwd(), "courseware-as-code-template-master");
+const CONFIG_PATH = external_path_default().resolve(process.cwd(), "cac.config.json");
 const TEMPLATE_COLLECTIONS_DIR = external_path_default().resolve(process.cwd(), "courseware-as-code-template-master/collections");
 const TEMPLATE_REPO = "https://codeload.github.com/kl13nt/courseware-as-code-template/tar.gz/master";
 
@@ -19287,6 +19288,23 @@ function downloadAndExtractTemplate() {
     });
 }
 
+;// CONCATENATED MODULE: ./src/lib/logger.ts
+
+const isDebug = core.getBooleanInput("debug");
+const logger = {
+    info: (message) => {
+        core.info(message);
+    },
+    debug: (message) => {
+        if (isDebug) {
+            core.debug(message);
+        }
+    },
+    error: (message) => {
+        core.error(message);
+    },
+};
+
 ;// CONCATENATED MODULE: ./src/index.ts
 var src_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -19302,49 +19320,51 @@ var src_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argu
 
 
 
+
 function run() {
     return src_awaiter(this, void 0, void 0, function* () {
         try {
-            core.info("Courseware as code is built by Nabil Tharwat. For support visit the GitHub issues page.");
+            logger.info("Courseware as code is built with 💖 by Nabil Tharwat. For support visit the GitHub issues page.");
             if (!external_fs_default().existsSync(LECTURES_DIR)) {
                 throw new Error('Lectures directory does not exist. Please create a "collections/lectures" directory in the root of your repo.');
             }
             yield downloadAndExtractTemplate();
-            core.info((0,external_child_process_namespaceObject.execSync)("ls", { cwd: TEMPLATE_DIR }).toString());
+            logger.info("Copying collections directory to template directory.");
             (0,external_fs_.cpSync)(COLLECTIONS_DIR, TEMPLATE_COLLECTIONS_DIR, {
                 recursive: true,
                 force: true,
             });
-            // eslint-disable-next-line no-console
-            console.log((0,external_child_process_namespaceObject.execSync)("ls", {
-                cwd: TEMPLATE_DIR,
-            }).toString());
-            core.info("install template npm dependencies");
-            (0,external_child_process_namespaceObject.execSync)("npm ci --legacy-peer-deps", {
-                cwd: TEMPLATE_DIR,
+            logger.info("Copying config");
+            (0,external_fs_.cpSync)(CONFIG_PATH, TEMPLATE_DIR, {
+                force: true,
             });
-            core.info("building website");
+            logger.info("Installing template npm dependencies");
+            const npmOutput = (0,external_child_process_namespaceObject.execSync)("npm ci --legacy-peer-deps", {
+                cwd: TEMPLATE_DIR,
+            }).toString();
+            logger.debug(npmOutput);
+            logger.info("Building website");
             const buildOutput = (0,external_child_process_namespaceObject.execSync)("npx next build", {
                 cwd: TEMPLATE_DIR,
             }).toString();
-            core.info(buildOutput);
-            core.info("exporting website");
+            logger.debug(buildOutput);
+            logger.info("exporting website");
             (0,external_child_process_namespaceObject.execSync)("npm run export", {
                 cwd: TEMPLATE_DIR,
             });
-            // core.info("outputting files to project out directory");
+            // logger.info("outputting files to project out directory");
             // const temp = fs.readdirSync(NEXT_OUT_DIR);
             // for (const filename of temp) {
             // 	const from = path.resolve(NEXT_OUT_DIR, filename);
             // 	const to = path.resolve(OUTPUT_DIR, filename);
             // 	fs.renameSync(from, to);
             // }
-            core.info("build complete");
+            logger.info("build complete");
             // TODO: move files from '/out' to cwd/out
         }
         catch (error) {
             if (error instanceof Error) {
-                core.error(error.message);
+                logger.error(error.message);
                 core.setFailed("Build failed. If you think this is a mistake please report it on the github issues page.");
             }
         }
