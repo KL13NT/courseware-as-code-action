@@ -8,13 +8,15 @@ import {
 	COLLECTIONS_DIR,
 	TEMPLATE_DIR,
 	TEMPLATE_COLLECTIONS_DIR,
+	CONFIG_PATH,
 } from "lib/constants";
 import { downloadAndExtractTemplate } from "lib/http";
+import { logger } from "lib/logger";
 
 async function run(): Promise<void> {
 	try {
-		core.info(
-			"Courseware as code is built by Nabil Tharwat. For support visit the GitHub issues page."
+		logger.info(
+			"Courseware as code is built with 💖 by Nabil Tharwat. For support visit the GitHub issues page."
 		);
 
 		if (!fs.existsSync(LECTURES_DIR)) {
@@ -25,38 +27,37 @@ async function run(): Promise<void> {
 
 		await downloadAndExtractTemplate();
 
-		core.info(execSync("ls", { cwd: TEMPLATE_DIR }).toString());
-
+		logger.info("Copying collections directory to template directory.");
 		cpSync(COLLECTIONS_DIR, TEMPLATE_COLLECTIONS_DIR, {
 			recursive: true,
 			force: true,
 		});
 
-		// eslint-disable-next-line no-console
-		console.log(
-			execSync("ls", {
-				cwd: TEMPLATE_DIR,
-			}).toString()
-		);
-
-		core.info("install template npm dependencies");
-		execSync("npm ci --legacy-peer-deps", {
-			cwd: TEMPLATE_DIR,
+		logger.info("Copying config");
+		cpSync(CONFIG_PATH, TEMPLATE_DIR, {
+			force: true,
 		});
 
-		core.info("building website");
+		logger.info("Installing template npm dependencies");
+		const npmOutput = execSync("npm ci --legacy-peer-deps", {
+			cwd: TEMPLATE_DIR,
+		}).toString();
+
+		logger.debug(npmOutput);
+
+		logger.info("Building website");
 		const buildOutput = execSync("npx next build", {
 			cwd: TEMPLATE_DIR,
 		}).toString();
 
-		core.info(buildOutput);
+		logger.debug(buildOutput);
 
-		core.info("exporting website");
+		logger.info("exporting website");
 		execSync("npm run export", {
 			cwd: TEMPLATE_DIR,
 		});
 
-		// core.info("outputting files to project out directory");
+		// logger.info("outputting files to project out directory");
 		// const temp = fs.readdirSync(NEXT_OUT_DIR);
 
 		// for (const filename of temp) {
@@ -66,12 +67,12 @@ async function run(): Promise<void> {
 		// 	fs.renameSync(from, to);
 		// }
 
-		core.info("build complete");
+		logger.info("build complete");
 
 		// TODO: move files from '/out' to cwd/out
 	} catch (error) {
 		if (error instanceof Error) {
-			core.error(error.message);
+			logger.error(error.message);
 			core.setFailed(
 				"Build failed. If you think this is a mistake please report it on the github issues page."
 			);

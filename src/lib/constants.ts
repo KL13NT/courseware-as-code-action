@@ -9,6 +9,7 @@ export const TEMPLATE_DIR = path.resolve(
 	process.cwd(),
 	"courseware-as-code-template-master"
 );
+export const CONFIG_PATH = path.resolve(process.cwd(), "cac.config.json");
 export const TEMPLATE_COLLECTIONS_DIR = path.resolve(
 	process.cwd(),
 	"courseware-as-code-template-master/collections"

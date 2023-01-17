@@ -2,6 +2,12 @@ name: "courseware-as-code"
 description: "Automate collaborative courseware maintenance"
 author: "Nabil Tharwat"
 
+inputs:
+  debug:
+    description: Whether to print debug logs
+    required: false
+    default: false
+
 runs:
   using: "node16"
   main: "dist/index.js"
