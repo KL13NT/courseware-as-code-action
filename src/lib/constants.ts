@@ -1,14 +1,19 @@
 import path from "path";
 
 export const COLLECTIONS_DIR = path.resolve(process.cwd(), "collections");
-export const LECTURES_DIR = path.resolve(process.cwd(), "collections/lectures");
-export const SLIDES_DIR = path.resolve(process.cwd(), "collections/slides");
+export const LECTURES_DIR = path.resolve(
+	process.cwd(),
+	"collections",
+	"lectures"
+);
+export const SLIDES_DIR = path.resolve(process.cwd(), "collections", "slides");
 export const TEMP_DIR = path.resolve(process.cwd(), ".temp");
 export const OUTPUT_DIR = path.resolve(process.cwd(), "out");
 export const TEMPLATE_DIR = path.resolve(
 	process.cwd(),
 	"courseware-as-code-template-master"
 );
+export const TEMPLATE_OUTPUT_DIR = path.resolve(TEMPLATE_DIR, "out");
 export const CONFIG_PATH = path.resolve(process.cwd(), "cac.config.json");
 export const TEMPLATE_CONFIG_PATH = path.resolve(
 	`${TEMPLATE_DIR}/cac.config.json`

@@ -98,8 +98,10 @@ Thumbs.db
 __tests__/runner/*
 lib/**/*
 
-# test collection files
-collections/
-
-# Ignore output files
+# output files
 out/
+
+# test files
+collections/
+.github/workflows/push.yml
+cac.config.json

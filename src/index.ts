@@ -22,7 +22,7 @@ async function run(): Promise<void> {
 
 		if (!fs.existsSync(LECTURES_DIR)) {
 			throw new Error(
-				'Lectures directory does not exist. Please create a "collections/lectures" directory in the root of your repo.'
+				`Lectures directory does not exist. Please create a directory in the path ${LECTURES_DIR} with markdown files inside.`
 			);
 		}
 

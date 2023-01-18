@@ -13400,10 +13400,11 @@ var external_path_default = /*#__PURE__*/__nccwpck_require__.n(external_path_);
 
 const COLLECTIONS_DIR = __nccwpck_require__.ab + "collections";
 const LECTURES_DIR = __nccwpck_require__.ab + "lectures";
-const SLIDES_DIR = external_path_default().resolve(process.cwd(), "collections/slides");
+const SLIDES_DIR = external_path_default().resolve(process.cwd(), "collections", "slides");
 const TEMP_DIR = external_path_default().resolve(process.cwd(), ".temp");
 const OUTPUT_DIR = external_path_default().resolve(process.cwd(), "out");
 const TEMPLATE_DIR = external_path_default().resolve(process.cwd(), "courseware-as-code-template-master");
+const TEMPLATE_OUTPUT_DIR = external_path_default().resolve(TEMPLATE_DIR, "out");
 const CONFIG_PATH = __nccwpck_require__.ab + "cac.config.json";
 const TEMPLATE_CONFIG_PATH = external_path_default().resolve(`${TEMPLATE_DIR}/cac.config.json`);
 const TEMPLATE_COLLECTIONS_DIR = external_path_default().resolve(process.cwd(), "courseware-as-code-template-master/collections");
@@ -19327,7 +19328,7 @@ function run() {
         try {
             logger.info("Courseware as code is built with 💖 by Nabil Tharwat. For support visit the GitHub issues page.");
             if (!external_fs_default().existsSync(LECTURES_DIR)) {
-                throw new Error('Lectures directory does not exist. Please create a "collections/lectures" directory in the root of your repo.');
+                throw new Error(`Lectures directory does not exist. Please create a directory in the path ${LECTURES_DIR} with markdown files inside.`);
             }
             yield downloadAndExtractTemplate();
             logger.info("Copying collections directory to template directory.");
