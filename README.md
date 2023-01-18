@@ -1,256 +1,148 @@
-# Courseware As Code - Education Made Easy(ier)
+ <!-- no toc -->
 
-A simple and intuitive Courseware as Code template repository for education
-everywhere. This template allows you to generate a fully functional and
-deploy-able website built using NextJS alongside generated PDF lectures and
-slides from simple Markdown files!
+# Courseware as Code - Education Made Easy(ier)
 
-**Table of Contents:**
+_Automated collaborative courseware maintenance and production with ease!_
 
-- [Why?](#why)
-- [What's inside?](#whats-inside)
-- [How?](#how)
-- [Map of Territory](#map-of-territory)
-- [Upcoming features](#upcoming-features)
-- [Getting started](#getting-started)
-- [Starting the development server](#starting-the-development-server)
-- [Starting the production server locally](#starting-the-production-server-locally)
-- [Deploying](#deploying)
+Courseware as Code Action is an intuitive courseware management project for
+education everywhere. This project allows you to generate a fully functional and
+deploy-able website by writing only [Markdown] files!
+
+## Table of Contents
+
+- [What Courseware as Code Actually Means](#what-courseware-as-code-actually-means)
+- [Why This Project](#why-this-project)
+- [Motivation](#motivation)
+- [What's Inside?](#whats-inside)
+- [Values](#values)
+- [Roadmap](#roadmap)
+- [Getting Started](#getting-started)
 - [Contributing to this project](#contributing-to-this-project)
-- [Contributing to a course as a student](#contributing-to-a-course-as-a-student)
 - [Managing a course as a teacher](#managing-a-course-as-a-teacher)
 - [Contributing as a developer](#contributing-as-a-developer)
 
-### Why?
+## What Courseware as Code Actually Means
+
+In 2014, the US Army established the Cyber branch and the U.S. Army Cyber School
+(USACyS). Quickly building USACyS from scratch required building courseware to
+fill workforce-oriented curricula. They had assigned students and scheduled
+classes before suitable content was created and needed a rapid solution to
+create needed content.
+
+Their requirements included the ability to store markup languages and the
+ability to create, share, review, and manage content approval. GitLab provided
+this through Git, which allowed them to apply the "everything as code" concept
+
+So, why not apply this elsewhere?
+
+## Why This Project
+
+You may be asking "why not just make a guide explaining how to manage courseware
+as code" and the answer is quite simple: maintaining everything as code requires
+a full team just to setup and maintain, while many institutes cannot spare this
+kind of human resources.
+
+So I had the idea of developing a GitHub action with a template repository that
+anyone can just "Use this template" and voila, you have a fully functioning
+courseware as code maintenance system.
+
+Of course it doesn't yet solve the problems of static hosting media and other
+non-markup files, but I wanted to release it at this stage to get feedback and
+to involve the community from the early start. Can't have a good community-based
+project without the community! 😉
+
+## Motivation
+
+> Disclaimer: The Motivation documentation was written when I was in my third
+> year of University. I'm now a graduate and enrolled in (mandatory 😅) military
+> service.
 
 I'm a student. A tired student. I'm tired of having to deal with outdated
 knowledge in the courses I'm enrolled in. I'm tired of having no way of
-contributing to the course I'm taking, nor a say in whatever content is
-presented to me.
+contributing to the course I'm taking, nor a choice in how content is presented
+to me.
 
-This repository, despite not providing solid solutions to
-these problems, remains a positive attempt at providing an easier way for
-teachers and courseware maintainers to update courseware, and a straight-forward
-method to build a truly positive community led by students and teachers alike. A
-step forward. It's my own implementation of [Courseware as Code](https://www.youtube.com/watch?v=L4zf_QIr4jQ).
+This project, despite not providing a complete solution to these problems,
+remains a positive attempt at providing an easier way for teachers and
+courseware maintainers to update courseware, and a straight-forward method to
+build a truly positive community led by students and teachers alike. A step
+forward towards a dream I have. I got the idea from [GitLab's GSoC 2020
+project].
 
-### What's inside?
+## What's Inside?
 
 - Statically generated HTML lecture pages!
-- Downloadable PDF lecture files!
-- PDF slides generation!
 - Markdown + Math (LaTeX) = ❤️
 - Add more pages to your website without having to go outside of your Markdown
   comfort-zone with MDX! 😍
 - Tutorials and examples to get started!
-- Complete control using configuration `site.config.js`
+- Complete control over site metadata using configuration `cac.config.json`.
+- Complete control over site themes through classless CSS. I built it with the
+  most standard way of doing things in HTML to make this easier.
 
-### How?
+## Values
 
-- Static pages are generated using NextJS
-- Code is linted and formatted using ESLint and Prettier respectively
-- Support for NextJS Markdown pages uses @next/mdx
-- Support for Markdown LaTeX math blocks uses remark-math
-- PDF generation (lectures and slides) uses Puppeteer and [Marp/Core](https://github.com/marp-team/marp-core)
-- All lib functions are tested using Jest
+As the creator of this project I envisioned it how my student self 2 years ago
+sought. Transparency, humbleness, appreciating collaboration, and support are
+the pillars of my vision with this project.
 
-### Map of Territory
+- Transparency in admitting your mistakes as a course maintainer and letting the
+  history of your changes be visible to the world.
+- Humbleness in accepting that you can make mistakes, and in accepting help and
+  contribution from students who may be decades younger than you and ages less
+  experienced than you.
+- Appreciating collaboration in showing how grateful you are that maintainers
+  and students are putting in the effort to improve the courseware, and in
+  providing a healthy environment for collaboration between maintainers and
+  students alike.
+- Support in providing the help needed in order for others to contribute comfortably
+  to courses you maintain, and in creating a community of respect. This meant
+  the world to me and I'm sure millions of other students as well.
 
-- `collections/` is where markdown content is found
-- `components/` are React components reused across pages
-- `pages/` are NextJS routes/pages
-- `public/` is where images and other static media belongs
-- `scripts/` are scripts used in the build pipeline
-- `styling/` where all global/print styling resides
-- `lib/` utilities used across the project
+## Roadmap
 
-### Upcoming features
+- Dynamic collection structure
+- Configurable code syntax highlighting language support!
+- Presentations support through
+  [Marp/Core](https://github.com/marp-team/marp-core)
+- Downloadable PDF lecture and presentation files!
+- Custom annotations such as (info, warn, danger)!
+- Configurable NextJS templates and build pipeline steps!
+- Student articles and blogs!
+- CMS support!
 
-- Student articles!
-- Contentful support
-- More customization
-- More tutorials
-- Other CMS's support
+## Getting Started
 
-### Getting started
+The project consists of three repositories:
 
-The following tools are required to launch this project on your local machine and
-deploy using CI/CD:
+- kl13nt/courseware-as-code-action: the action code itself.
+- kl13nt/courseware-as-code-template: the NextJS template used to render the website.
+- kl13nt/courseware-as-code-example: An example [template] repository to
+  bootstrap course repositories from.
 
-- [NodeJS](nodejs.org)
-- [npm](npmjs.com) (Pre-installed with NodeJS)
-- [Git](https://git-scm.com) (You can work with a graphical interface too!)
+> This project assumes you have a GitHub account. They're free.
 
-You'll also need a text/code editor depending on what you're doing.
+If you're a courseware maintainer or student you're going to interact with the
+third repo only, which consists of the markdown content itself. Refer to the
+[Usage Guide].
 
-After you set these tools up and are ready to rock you can proceed to cloning
-the repo and starting up the dev server. If this is the first time you use this
-project then you need to `use this template` on GitHub before going forward.
+If you're a developer wishing to extend or contribute to the action you're going
+to be interacting with the first two, which are the source code that runs the
+project. Refer to the [Developers Guide].
 
-This should leave you with a repo owned by you. It'll say "generated from
-KL13NT/courseware-as-code" below your repo's name. This is absolutely fine. It
-just means that you used this repo to generate yours.
-
-You'll then need to clone the repository to your own machine. For a tutorial on
-how to clone your repository I recommend the [official GitHub
-documentation](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository).
-
-By now you'll have the repository locally available on your machine. It's time
-to install the required packages. I use Yarn, but you don't need to install it
-if you're not familiar with it. Simply run `npm install` inside the repository
-directory to begin the installation process.
-
-This will download all the required packages and install them. All you have to
-do now is wait for it to finish, after which you'll be ready to either start the
-development server or build an output sample. The four main commands we'll look
-at are `dev`, `build`, `export`, and `start`.
-
-We'll be using npm scripts extensively. If you're not familiar with them have a go at the
-[official documentation](https://docs.npmjs.com/cli/v7/using-npm/scripts) or this
-[delicious article](https://deliciousbrains.com/npm-build-script).
-
-In short, what we did so far is:
-
-- Install prerequisites
-- Generate a new repo from this one
-- Clone the generated repo
-- Install npm packages
-
-# Steps of installation and usage
-- _Commit changes and push to github_
-- _Execute action_
-_- Checkout content repo_
-_- Install nodejs and npm_
-- _Read config if any, otherwise use defaults_
-- _Fetch template and unzip in cwd/projectname_
-_- Copy collections from repo into template folder_
-_- cd into template folder_
-_- install npm dependencies_
-- run build script to generate static content using next 
-- publish to github pages by default 
-
-# Create a JavaScript Action using TypeScript
-> Note to advanced users: If you're using a different hosted solution such as
-> GitLab, you can clone the repo and change the upstream remote to your own
-> host.
-
-> Note to advanced users: I recommend using Yarn instead of NPM.
-
-### Starting the development server
-
-The `dev` command starts up the development server. The development server is
-available at `localhost:3000` and automagically updates on changes to source
-code and Markdown files. Now you can navigate the website freely and modify any
-piece of code as you see fit.
-
-This development server is a [NextJS](https://nextjs.org/docs/getting-started)
-dev server bootstrapped by
-[Webpack](https://nextjs.org/docs/api-reference/next.config.js/custom-webpack-config).
-
-> The dev server doesn't update the PDF files to save resources.
-
-To test this out navigate to `localhost:3000/lectures/tutorial` and update the
-`collections/lectures/tutorial.md` file to see your changes reflected in the
-website instantly! 😀
-
-### Starting the production server locally
-
-The `dev` command started up a development server. Now you probably want to see
-how the website will function when deployed. To do that, the `start` command
-will be needed. `start` starts the application in production mode. The
-application should be compiled with `build` first.
-
-You may be wondering, can I export some basic HTML & CSS static files? And the
-answer is yes! The `export` command allows you to export your app to static
-HTML, which can be run standalone without the need of a Node.js server. It also
-generates up-to-date PDF files alongside the output files.
-
-### Jumping into the code
-
-You're probably wondering, how the hell do you modify this thing? And let me
-answer that in simple points. This project is built on 3 main packages: Next.js,
-marp-core, and Puppeteer.
-
-Next.js is a web framework for building statically generated and
-server-side-rendered web applications. It uses what is known as filesystem-based
-routing. I talked about it extensively [in this
-video](https://www.youtube.com/watch?v=ZpXTvP7QVFY&t=142s), and you can read the
-[official documentation here](https://nextjs.org/docs/routing/introduction).
-Each js/jsx/mdx file in the `pages/` directory corresponds to a page in the output
-website. So `pages/index.mdx` corresponds to `example.com/index.html`, and so
-on.
-
-> MDX files are a special mix of Markdown and React. You can create new website
-> pages using pure Markdown using MDX. Just copy index.mdx and modify it as you wish.
-
-There are three main pages: index, lectures, and [slug]. [slug] is a [dynamic
-route](https://nextjs.org/docs/routing/dynamic-routes) that corresponds to
-each markdown file in the `collections/lectures`
-directory.
-
-Each file in the `collections/lectures` directory is rendered using the
-`lectures/[slug]` component page once in the output bundle. You probably don't
-need to modify any of those much at all.
-
-Styling, however, is different. Each page has a specific css file next to it. So
-`index.mdx` uses `index.module.css`, and so on. These are
-[CSSModules](https://github.com/css-modules/css-modules) and are scoped to those
-pages *only*. Global styling is available in the `styling/index.css` file.
-
-So far (if you've read all the links) you should be ready to edit these pages
-freely. Note that there are other tutorials available only in the built website.
-You can manually read them in the `collections` directory, but I'd generally
-recommend against that as it takes away part of the explanation.
-
-### Deploying
-
-There are multiple ways to deploy this project. The first (and hardest) way is
-to always use `export` when deploying. You'll then need to either push all the
-exported files to source control and deploy from there, or manually take the
-files and upload them to your host of choice.
-
-The other, more advanced yet easier way, is to setup a CI/CD.
-[Vercel](https://vercel.com/docs/platform/deployments#making-deployments) is the
-organization behind NextJS and is the recommended way to host this project.
-[Netlify](https://www.netlify.com/with/nextjs) also supports NextJS out of the
-box and is dead simple to get started with.
-
-If you'd like to deploy the demo (this repo) just click the button below!
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2FKL13NT%2Fcourseware-as-code&project-name=courseware-as-code&repo-name=courseware-as-code)
-
-### Contributing to this project
+## Contributing to this project
 
 I'm open to all kinds of contributions. If you want to:
 
-    🤔 Suggest a feature
+    🚀 Suggest a feature
     🐛 Report an issue
     📖 Improve documentation
     👩‍💻 Contribute to the code
 
-You are more than welcome. Before contributing, kindly check the
-[guidelines](CONTRIBUTING.md).
+You are more than welcome. By contributing to this repository you accept my
+contribution [guidelines](CONTRIBUTING.md).
 
-### Contributing to a course as a student
-
-If you're a student trying to contribute to a course's courseware then what you want
-to look for is the `collections` folder. This folder contains all input Markdown
-documents that go into making lectures and slides.
-
-The `collections` folder has two subfolders, `slides` and `lectures`. The `lectures`
-folder contains the markdown for all lectures in a course. Each lecture is contained
-in a single Markdown file. All you have to do then is locate the lecture you wish to
-contribute to, and simply edit it!
-
-You can help by fixing typos, adding better explanation, adding useful
-resources that helped you, or even adding whole lectures! How cool is that! 😄
-
-If you have no prior experience using Git or contributing to open source projects
-refer to [this lovely tutorial series by Digital Ocean](https://www.digitalocean.com/community/tutorial_series/an-introduction-to-open-source).
-It walks you through the basic fundamentals of Git all the way until you're ready to
-contribute!
-
-### Managing a course as a teacher
+## Managing a course as a teacher
 
 As a teacher you'll most probably be responsible for this repo, given you're
 responsible for the course as well. Your role dictates transparency and fairness
@@ -261,9 +153,16 @@ your own repository scale.
 
 > Knowledge of Git is required.
 
-### Contributing as a developer
+## Contributing as a developer
 
 If you're a developer willing to contribute to this project you're always more
-than welcome to do so. There's a complete [contribution guide](CONTRIBUTING.md)
-to help you get started, and the code is fairly documented to allow further
+than welcome to do so. There's a complete [contribution guide] to help you get
+started, and the code is fairly documented to allow further
 modifications/extensions.
+
+[contribution guide]: CONTRIBUTING.md
+[gitlab's gsoc 2020 project]: https://gitlab.com/gitlab-com/marketing/community-relations/education-program/general/-/issues/88
+[markdown]: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#links
+[template]: https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template
+[usage guide]: ./docs/usage.md
+[developers guide]: ./docs/technical.md
