@@ -13400,14 +13400,13 @@ var external_path_default = /*#__PURE__*/__nccwpck_require__.n(external_path_);
 
 const COLLECTIONS_DIR = __nccwpck_require__.ab + "collections";
 const LECTURES_DIR = __nccwpck_require__.ab + "lectures";
-const SLIDES_DIR = external_path_default().resolve(process.cwd(), "collections", "slides");
-const TEMP_DIR = external_path_default().resolve(process.cwd(), ".temp");
-const OUTPUT_DIR = external_path_default().resolve(process.cwd(), "out");
-const TEMPLATE_DIR = external_path_default().resolve(process.cwd(), "courseware-as-code-template-master");
-const TEMPLATE_OUTPUT_DIR = external_path_default().resolve(TEMPLATE_DIR, "out");
+const TEMP_DIR = external_path_default().join(process.cwd(), ".temp");
+const OUTPUT_DIR = external_path_default().join(process.cwd(), "out");
+const TEMPLATE_DIR = external_path_default().join(process.cwd(), "courseware-as-code-template-master");
+const TEMPLATE_OUTPUT_DIR = external_path_default().join(TEMPLATE_DIR, "out");
 const CONFIG_PATH = __nccwpck_require__.ab + "cac.config.json";
-const TEMPLATE_CONFIG_PATH = external_path_default().resolve(`${TEMPLATE_DIR}/cac.config.json`);
-const TEMPLATE_COLLECTIONS_DIR = external_path_default().resolve(process.cwd(), "courseware-as-code-template-master/collections");
+const TEMPLATE_CONFIG_PATH = external_path_default().join(`${TEMPLATE_DIR}/cac.config.json`);
+const TEMPLATE_COLLECTIONS_DIR = external_path_default().join(process.cwd(), "courseware-as-code-template-master/collections");
 const TEMPLATE_REPO = "https://codeload.github.com/kl13nt/courseware-as-code-template/tar.gz/master";
 
 ;// CONCATENATED MODULE: ./node_modules/@sindresorhus/is/dist/index.js

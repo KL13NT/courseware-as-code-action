@@ -1,24 +1,19 @@
 import path from "path";
 
-export const COLLECTIONS_DIR = path.resolve(process.cwd(), "collections");
-export const LECTURES_DIR = path.resolve(
-	process.cwd(),
-	"collections",
-	"lectures"
-);
-export const SLIDES_DIR = path.resolve(process.cwd(), "collections", "slides");
-export const TEMP_DIR = path.resolve(process.cwd(), ".temp");
-export const OUTPUT_DIR = path.resolve(process.cwd(), "out");
-export const TEMPLATE_DIR = path.resolve(
+export const COLLECTIONS_DIR = path.join(process.cwd(), "collections");
+export const LECTURES_DIR = path.join(COLLECTIONS_DIR, "lectures");
+export const TEMP_DIR = path.join(process.cwd(), ".temp");
+export const OUTPUT_DIR = path.join(process.cwd(), "out");
+export const TEMPLATE_DIR = path.join(
 	process.cwd(),
 	"courseware-as-code-template-master"
 );
-export const TEMPLATE_OUTPUT_DIR = path.resolve(TEMPLATE_DIR, "out");
-export const CONFIG_PATH = path.resolve(process.cwd(), "cac.config.json");
-export const TEMPLATE_CONFIG_PATH = path.resolve(
+export const TEMPLATE_OUTPUT_DIR = path.join(TEMPLATE_DIR, "out");
+export const CONFIG_PATH = path.join(process.cwd(), "cac.config.json");
+export const TEMPLATE_CONFIG_PATH = path.join(
 	`${TEMPLATE_DIR}/cac.config.json`
 );
-export const TEMPLATE_COLLECTIONS_DIR = path.resolve(
+export const TEMPLATE_COLLECTIONS_DIR = path.join(
 	process.cwd(),
 	"courseware-as-code-template-master/collections"
 );
