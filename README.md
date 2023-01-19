@@ -2,6 +2,9 @@
 
 # Courseware as Code - Education Made Easy(ier)
 
+[![All Contributors](https://img.shields.io/github/all-contributors/kl13nt/courseware-as-code-action?color=ee8449&style=flat)](#contributors)
+![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/kl13nt/courseware-as-code-action?sort=semver)
+
 _Automated collaborative courseware maintenance and production with ease!_
 
 Courseware as Code Action is an intuitive courseware management project for
@@ -15,11 +18,12 @@ deploy-able website by writing only [Markdown] files!
 - [Motivation](#motivation)
 - [What's Inside?](#whats-inside)
 - [Values](#values)
-- [Roadmap](#roadmap)
 - [Getting Started](#getting-started)
-- [Contributing to this project](#contributing-to-this-project)
-- [Managing a course as a teacher](#managing-a-course-as-a-teacher)
-- [Contributing as a developer](#contributing-as-a-developer)
+- [Become a Sponsor](#become-a-sponsor)
+- [Roadmap](#roadmap)
+- [Contributing to This Project](#contributing-to-this-project)
+- [Contributors](#contributors)
+- [FAQ](#faq)
 
 ## What Courseware as Code Actually Means
 
@@ -99,18 +103,6 @@ the pillars of my vision with this project.
   to courses you maintain, and in creating a community of respect. This meant
   the world to me and I'm sure millions of other students as well.
 
-## Roadmap
-
-- Dynamic collection structure
-- Configurable code syntax highlighting language support!
-- Presentations support through
-  [Marp/Core](https://github.com/marp-team/marp-core)
-- Downloadable PDF lecture and presentation files!
-- Custom annotations such as (info, warn, danger)!
-- Configurable NextJS templates and build pipeline steps!
-- Student articles and blogs!
-- CMS support!
-
 ## Getting Started
 
 The project consists of three repositories:
@@ -120,17 +112,35 @@ The project consists of three repositories:
 - kl13nt/courseware-as-code-example: An example [template] repository to
   bootstrap course repositories from.
 
-> This project assumes you have a GitHub account. They're free.
+> This project assumes you have a GitHub account. It's free.
 
 If you're a courseware maintainer or student you're going to interact with the
 third repo only, which consists of the markdown content itself. Refer to the
 [Usage Guide].
 
+## Become a Sponsor
+
+I invest a lot of my personal time and energy to maintain this project ([and
+others!](https://github.com/KL13NT/)). If you'd like to support me please
+
+## Roadmap
+
+- Dynamic collection structure
+- Configurable code syntax highlighting language support!
+- Custom image sizes!
+- Presentations support through
+  [Marp/Core](https://github.com/marp-team/marp-core)
+- Downloadable PDF lecture and presentation files!
+- Custom annotations such as (info, warn, danger)!
+- Configurable NextJS templates and build pipeline steps!
+- Student articles and blogs!
+- CMS support!
+
+## Contributing to This Project
+
 If you're a developer wishing to extend or contribute to the action you're going
 to be interacting with the first two, which are the source code that runs the
 project. Refer to the [Developers Guide].
-
-## Contributing to this project
 
 I'm open to all kinds of contributions. If you want to:
 
@@ -142,23 +152,42 @@ I'm open to all kinds of contributions. If you want to:
 You are more than welcome. By contributing to this repository you accept my
 contribution [guidelines](CONTRIBUTING.md).
 
-## Managing a course as a teacher
+## Contributors
 
-As a teacher you'll most probably be responsible for this repo, given you're
-responsible for the course as well. Your role dictates transparency and fairness
-in managing your course. This shows in terms of this repository and is
-represented by your welcoming of student contribution to making courseware
-better. There's not much to say here. You can use the developer guidelines at
-your own repository scale.
+This project uses the [All Contributors] bot. All contributors (even on other repositories) will be added to this list.
 
-> Knowledge of Git is required.
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/0xmostafam"><img src="https://avatars.githubusercontent.com/u/43635184?v=4?s=100" width="100px;" alt="Mostafa Elbadri"/><br /><sub><b>Mostafa Elbadri</b></sub></a><br /><a href="https://github.com/KL13NT/courseware-as-code-action/commits?author=0xmostafam" title="Documentation">📖</a></td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td align="center" size="13px" colspan="7">
+        <img src="https://raw.githubusercontent.com/all-contributors/all-contributors-cli/1b8533af435da9854653492b1327a23a4dbd0a10/assets/logo-small.svg">
+          <a href="https://all-contributors.js.org/docs/en/bot/usage">Add your contributions</a>
+        </img>
+      </td>
+    </tr>
+  </tfoot>
+</table>
 
-## Contributing as a developer
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
 
-If you're a developer willing to contribute to this project you're always more
-than welcome to do so. There's a complete [contribution guide] to help you get
-started, and the code is fairly documented to allow further
-modifications/extensions.
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+## FAQ
+
+**Why not use GitHub's Jekyll setup?**
+Because I wanted this solution to work with other platforms like GitLab, and to
+have complete control over the build steps. This allows me to swap out NextJS
+for anything else, configure custom transformations on files before the static
+generator is ever run, etc.
 
 [contribution guide]: CONTRIBUTING.md
 [gitlab's gsoc 2020 project]: https://gitlab.com/gitlab-com/marketing/community-relations/education-program/general/-/issues/88
@@ -166,3 +195,4 @@ modifications/extensions.
 [template]: https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template
 [usage guide]: ./docs/usage.md
 [developers guide]: ./docs/technical.md
+[all contributors]: https://allcontributors.org/docs/en/bot/usage
