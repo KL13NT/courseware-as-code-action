@@ -13157,6 +13157,42 @@ try {
 
 /***/ }),
 
+/***/ 317:
+/***/ ((__unused_webpack_module, __webpack_exports__, __nccwpck_require__) => {
+
+"use strict";
+/* harmony export */ __nccwpck_require__.d(__webpack_exports__, {
+/* harmony export */   "Vl": () => (/* binding */ LECTURES_DIR),
+/* harmony export */   "Y3": () => (/* binding */ TEMPLATE_COLLECTIONS_DIR),
+/* harmony export */   "ci": () => (/* binding */ TEMPLATE_REPO),
+/* harmony export */   "lg": () => (/* binding */ CONFIG_PATH),
+/* harmony export */   "t9": () => (/* binding */ TEMPLATE_DIR),
+/* harmony export */   "xW": () => (/* binding */ COLLECTIONS_DIR),
+/* harmony export */   "xd": () => (/* binding */ TEMPLATE_CONFIG_PATH)
+/* harmony export */ });
+/* unused harmony exports TEMP_DIR, OUTPUT_DIR, TEMPLATE_OUTPUT_DIR */
+/**
+ * Please don't come after me for the following mess. I know. I KNOW. TRUST ME I
+ * KNOW! I am working on a better solution. I promise. I am just trying to get
+ * this thing working for now. It's the way vercel/ncc handles path joins. :(
+ *
+ * https://github.com/prisma/prisma/issues/945
+ * https://github.com/vercel/ncc/issues/390
+ */
+const COLLECTIONS_DIR = eval(`require('path').join(process.cwd(), 'collections')`);
+const LECTURES_DIR = eval(`require('path').join(process.cwd(), 'collections/lectures')`);
+const TEMP_DIR = eval(`require('path').join(process.cwd(), '.temp')`);
+const OUTPUT_DIR = eval(`require('path').join(process.cwd(), 'out')`);
+const TEMPLATE_DIR = eval(`require('path').join(process.cwd(), 'courseware-as-code-template-master')`);
+const TEMPLATE_OUTPUT_DIR = eval(`require('path').join('${TEMPLATE_DIR}', 'out')`);
+const CONFIG_PATH = eval(`require('path').join(process.cwd(), 'cac.config.json')`);
+const TEMPLATE_CONFIG_PATH = eval(`require('path').join('${TEMPLATE_DIR}', 'cac.config.json')`);
+const TEMPLATE_COLLECTIONS_DIR = eval(`require("path").join(process.cwd(), "courseware-as-code-template-master/collections")`);
+const TEMPLATE_REPO = "https://codeload.github.com/kl13nt/courseware-as-code-template/tar.gz/master";
+
+
+/***/ }),
+
 /***/ 9491:
 /***/ ((module) => {
 
@@ -13393,22 +13429,8 @@ var external_fs_default = /*#__PURE__*/__nccwpck_require__.n(external_fs_);
 const external_child_process_namespaceObject = require("child_process");
 // EXTERNAL MODULE: ./node_modules/@actions/core/lib/core.js
 var core = __nccwpck_require__(2186);
-// EXTERNAL MODULE: external "path"
-var external_path_ = __nccwpck_require__(1017);
-var external_path_default = /*#__PURE__*/__nccwpck_require__.n(external_path_);
-;// CONCATENATED MODULE: ./src/lib/constants.ts
-
-const COLLECTIONS_DIR = __nccwpck_require__.ab + "collections";
-const LECTURES_DIR = __nccwpck_require__.ab + "lectures";
-const TEMP_DIR = external_path_default().join(process.cwd(), ".temp");
-const OUTPUT_DIR = external_path_default().join(process.cwd(), "out");
-const TEMPLATE_DIR = external_path_default().join(process.cwd(), "courseware-as-code-template-master");
-const TEMPLATE_OUTPUT_DIR = external_path_default().join(TEMPLATE_DIR, "out");
-const CONFIG_PATH = __nccwpck_require__.ab + "cac.config.json";
-const TEMPLATE_CONFIG_PATH = external_path_default().join(`${TEMPLATE_DIR}/cac.config.json`);
-const TEMPLATE_COLLECTIONS_DIR = external_path_default().join(process.cwd(), "courseware-as-code-template-master/collections");
-const TEMPLATE_REPO = "https://codeload.github.com/kl13nt/courseware-as-code-template/tar.gz/master";
-
+// EXTERNAL MODULE: ./src/lib/constants.ts
+var constants = __nccwpck_require__(317);
 ;// CONCATENATED MODULE: ./node_modules/@sindresorhus/is/dist/index.js
 const typedArrayTypeNames = [
     'Int8Array',
@@ -19244,6 +19266,8 @@ const got = source_create(defaults);
 var tar = __nccwpck_require__(4674);
 // EXTERNAL MODULE: external "os"
 var external_os_ = __nccwpck_require__(2037);
+// EXTERNAL MODULE: external "path"
+var external_path_ = __nccwpck_require__(1017);
 // EXTERNAL MODULE: external "stream"
 var external_stream_ = __nccwpck_require__(2781);
 ;// CONCATENATED MODULE: external "fs/promises"
@@ -19277,9 +19301,9 @@ function downloadTar(url) {
 }
 function downloadAndExtractTemplate() {
     return __awaiter(this, void 0, void 0, function* () {
-        const tempFile = yield downloadTar(TEMPLATE_REPO);
-        if (!(0,external_fs_.existsSync)(TEMPLATE_DIR)) {
-            (0,external_fs_.mkdirSync)(TEMPLATE_DIR, { recursive: true });
+        const tempFile = yield downloadTar(constants/* TEMPLATE_REPO */.ci);
+        if (!(0,external_fs_.existsSync)(constants/* TEMPLATE_DIR */.t9)) {
+            (0,external_fs_.mkdirSync)(constants/* TEMPLATE_DIR */.t9, { recursive: true });
         }
         yield tar.x({
             file: tempFile,
@@ -19326,32 +19350,33 @@ function run() {
     return src_awaiter(this, void 0, void 0, function* () {
         try {
             logger.info("Courseware as code is built with 💖 by Nabil Tharwat. For support visit the GitHub issues page.");
-            if (!external_fs_default().existsSync(LECTURES_DIR)) {
-                throw new Error(`Lectures directory does not exist. Please create a directory in the path ${LECTURES_DIR} with markdown files inside.`);
+            if (!external_fs_default().existsSync(constants/* LECTURES_DIR */.Vl)) {
+                throw new Error(`Lectures directory does not exist. Please create a directory in the path ${constants/* LECTURES_DIR */.Vl} with markdown files inside.`);
             }
+            logger.info("Downloading and extracting the template");
             yield downloadAndExtractTemplate();
-            logger.info("Copying collections directory to template directory.");
-            (0,external_fs_.cpSync)(COLLECTIONS_DIR, TEMPLATE_COLLECTIONS_DIR, {
+            logger.info("Copying collections directory to template directory");
+            (0,external_fs_.cpSync)(constants/* COLLECTIONS_DIR */.xW, constants/* TEMPLATE_COLLECTIONS_DIR */.Y3, {
                 recursive: true,
                 force: true,
             });
             logger.info("Copying config");
-            (0,external_fs_.cpSync)(CONFIG_PATH, TEMPLATE_CONFIG_PATH, {
+            (0,external_fs_.cpSync)(constants/* CONFIG_PATH */.lg, constants/* TEMPLATE_CONFIG_PATH */.xd, {
                 force: true,
             });
             logger.info("Installing template npm dependencies");
             const npmOutput = (0,external_child_process_namespaceObject.execSync)("npm ci --legacy-peer-deps", {
-                cwd: TEMPLATE_DIR,
+                cwd: constants/* TEMPLATE_DIR */.t9,
             }).toString();
             logger.debug(npmOutput);
             logger.info("Building website");
             const buildOutput = (0,external_child_process_namespaceObject.execSync)("npx next build", {
-                cwd: TEMPLATE_DIR,
+                cwd: constants/* TEMPLATE_DIR */.t9,
             }).toString();
             logger.debug(buildOutput);
             logger.info("exporting website");
             (0,external_child_process_namespaceObject.execSync)("npm run export", {
-                cwd: TEMPLATE_DIR,
+                cwd: constants/* TEMPLATE_DIR */.t9,
             });
             // logger.info("outputting files to project out directory");
             // const temp = fs.readdirSync(NEXT_OUT_DIR);
