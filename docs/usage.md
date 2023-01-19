@@ -39,7 +39,9 @@ By then you'll have created a new repository with the default example lectures
 available. Once you make changes (either by editing or deleting an existing
 file, or creating new files) and commit the changes the
 courseware-as-code-action will start off and provide you with a working GitHub
-Pages website.
+Pages website. The website will be available at
+`https://your_username.github.io/repository_name`. For instance, my example
+project can be visited by going to [https://kl13nt.github.io/courseware-as-code-example](https://kl13nt.github.io/courseware-as-code-example).
 
 > The template repository has example articles explaining how to do a several
 > things, such as using LaTeX, embedding YouTube videos, and how to use
