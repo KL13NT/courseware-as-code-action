@@ -121,7 +121,8 @@ third repo only, which consists of the markdown content itself. Refer to the
 ## Become a Sponsor
 
 I invest a lot of my personal time and energy to maintain this project ([and
-others!](https://github.com/KL13NT/)). If you'd like to support me please
+others!](https://github.com/KL13NT/)). If you'd like to sponsor me I have a
+[GitHub Sponsors] profile up!
 
 ## Roadmap
 
@@ -184,6 +185,7 @@ This project uses the [All Contributors] bot. All contributors (even on other re
 ## FAQ
 
 **Why not use GitHub's Jekyll setup?**
+
 Because I wanted this solution to work with other platforms like GitLab, and to
 have complete control over the build steps. This allows me to swap out NextJS
 for anything else, configure custom transformations on files before the static
@@ -196,3 +198,4 @@ generator is ever run, etc.
 [usage guide]: ./docs/usage.md
 [developers guide]: ./docs/technical.md
 [all contributors]: https://allcontributors.org/docs/en/bot/usage
+[github sponsors]: https://github.com/sponsors/KL13NT

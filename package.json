@@ -14,7 +14,10 @@
 		"format-check": "prettier --check '**/*.ts'",
 		"lint": "eslint src/**/*.ts",
 		"prepackage": "npm run lint",
-		"package": "ncc build src/index.ts --source-map --license licenses.txt -o dist"
+		"package": "ncc build src/index.ts --source-map --license licenses.txt -o dist",
+		"act": "npm run package && act push",
+		"contributors:add": "all-contributors add",
+		"contributors:generate": "all-contributors generate"
 	},
 	"repository": {
 		"type": "git",
@@ -48,6 +51,7 @@
 		"@types/node": "^16.10.5",
 		"@typescript-eslint/parser": "^5.8.1",
 		"@vercel/ncc": "^0.36.0",
+		"all-contributors-cli": "^6.24.0",
 		"eslint": "^7.32.0",
 		"eslint-import-resolver-typescript": "^3.4.1",
 		"eslint-plugin-github": "^4.3.2",

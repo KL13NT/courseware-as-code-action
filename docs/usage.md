@@ -23,6 +23,9 @@ dictates transparency and fairness in managing your courses. This shows in terms
 of this repository and is represented by your welcoming of student contribution
 to making courseware better.
 
+> If you don't usually prepare written lectures you can share your prep notes
+> instead!
+
 I ask of you to have patience with students contributing for the first time, and
 to put in an effort towards building a healthy community around your courses.
 
@@ -37,6 +40,10 @@ available. Once you make changes (either by editing or deleting an existing
 file, or creating new files) and commit the changes the
 courseware-as-code-action will start off and provide you with a working GitHub
 Pages website.
+
+> The template repository has example articles explaining how to do a several
+> things, such as using LaTeX, embedding YouTube videos, and how to use
+> Markdown.
 
 You can change course name, code, and other variables through the
 `cac.config.json` file present in the repository. Change any of the values and
