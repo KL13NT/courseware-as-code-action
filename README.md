@@ -126,16 +126,18 @@ others!](https://github.com/KL13NT/)). If you'd like to sponsor me I have a
 
 ## Roadmap
 
+- Custom directives for notes and warnings!
+- GitHub Flavoured Markdown extensions (Autolink literals, footnotes, strikethrough, tables, tasklists)
+- Automatically create embeds from links
 - Dynamic collection structure
 - Configurable code syntax highlighting language support!
 - Custom image sizes!
 - Presentations support through
   [Marp/Core](https://github.com/marp-team/marp-core)
-- Downloadable PDF lecture and presentation files!
-- Custom annotations such as (info, warn, danger)!
-- Configurable NextJS templates and build pipeline steps!
 - Student articles and blogs!
+- Downloadable PDF lecture and presentation files!
 - CMS support!
+- Configurable NextJS templates and build pipeline steps!
 
 ## Contributing to This Project
 

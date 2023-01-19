@@ -5,6 +5,10 @@ The project consists of two source code repositories used to build content:
 - kl13nt/courseware-as-code-action: the action code itself.
 - kl13nt/courseware-as-code-template: the NextJS template used to render the website.
 
+## How it Works
+
+<img alt="how it works graph" src="./2023-01-20-0109.png" height="500px">
+
 The action works by downloading a NextJS template, moving the markdown
 collections into the template directory, and executing `next build && next export` to
 export static assets in the output directory.
