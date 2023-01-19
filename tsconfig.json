@@ -11,11 +11,11 @@
 		"strictNullChecks": true,
 		"baseUrl": ".",
 		"paths": {
-			"components/*": ["./src/components/*"],
-			"lib/*": ["./src/lib/*"],
-			"pages/*": ["./src/pages/*"],
-			"scripts/*": ["./src/scripts/*"],
-			"interfaces/*": ["src/interfaces/*"]
+			"@components/*": ["./src/components/*"],
+			"@lib/*": ["./src/lib/*"],
+			"@pages/*": ["./src/pages/*"],
+			"@scripts/*": ["./src/scripts/*"],
+			"@interfaces/*": ["src/interfaces/*"]
 		},
 		"lib": ["dom", "dom.iterable", "esnext"],
 		"allowJs": true,

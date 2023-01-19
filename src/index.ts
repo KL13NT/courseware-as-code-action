@@ -4,15 +4,15 @@ import { execSync } from "child_process";
 import * as core from "@actions/core";
 
 import {
-	LECTURES_DIR,
-	COLLECTIONS_DIR,
 	TEMPLATE_DIR,
 	TEMPLATE_COLLECTIONS_DIR,
 	CONFIG_PATH,
 	TEMPLATE_CONFIG_PATH,
-} from "lib/constants";
-import { downloadAndExtractTemplate } from "lib/http";
-import { logger } from "lib/logger";
+	COLLECTIONS_DIR,
+	LECTURES_DIR,
+} from "@lib/constants";
+import { downloadAndExtractTemplate } from "@lib/http";
+import { logger } from "@lib/logger";
 
 async function run(): Promise<void> {
 	try {
@@ -26,9 +26,10 @@ async function run(): Promise<void> {
 			);
 		}
 
+		logger.info("Downloading and extracting the template");
 		await downloadAndExtractTemplate();
 
-		logger.info("Copying collections directory to template directory.");
+		logger.info("Copying collections directory to template directory");
 		cpSync(COLLECTIONS_DIR, TEMPLATE_COLLECTIONS_DIR, {
 			recursive: true,
 			force: true,
