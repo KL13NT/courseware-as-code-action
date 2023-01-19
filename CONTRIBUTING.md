@@ -2,29 +2,28 @@
 
 Reading and following these guidelines will help me make the contribution process easy and effective for everyone involved. It also communicates that you agree to respect the time of the developers managing and developing these open source projects. In return, I will reciprocate that respect by addressing your issue, assessing changes, and helping you finalize your pull requests.
 
-## Quicklinks
-
--   [Code of Conduct](#code-of-conduct)
--   [Getting Started](#getting-started)
-    -   [Discussions](#discussions)
-    -   [Issues](#issues)
-    -   [Pull Requests](#pull-requests)
--   [Committing](#committing)
+- [Code of Conduct](#code-of-conduct)
+- [Getting Started](#getting-started)
+  - [Discussions](#discussions)
+  - [Issues](#issues)
+  - [Pull Requests](#pull-requests)
+- [Committing](#committing)
+- [Naming Branches](#naming-branches)
 
 ## Code of Conduct
 
-I take the open source community seriously and hold myself and other contributors to high standards of communication. By participating and contributing to this project, you agree to uphold the [Code of Conduct](./CODE-OF-CONDUCT.md).
+I take the open source community seriously and hold myself and other contributors to high standards of communication. By participating and contributing to this project, you agree to uphold the [Code of Conduct](./CODE_OF_CONDUCT.md).
 
 ## Getting Started
 
 Contributions are made to this repo via Issues and Pull Requests (PRs). A few general guidelines that cover both:
 
--   Search for existing Issues and PRs before creating your own.
--   Depending on the impact, it could take a while to investigate the root cause of a bug. A friendly ping in the comment thread to the submitter or a contributor can help draw attention if your issue is blocking.
+- Search for existing Issues and PRs before creating your own.
+- Depending on the impact, it could take a while to investigate the root cause of a bug. A friendly ping in the comment thread to the submitter or a contributor can help draw attention if your issue is blocking.
 
 ### Discussions
 
-This repository uses GitHub Discussions. This is where all discussions should occur. If you have an idea for a feature but don't have complete details on how it should be implemented then please use discussions to discuss these details. Issues are reserved for detailed bug reports and feature requests. If you have questions, basic ideas, or have built something awesome using this repository feel free to use discussions.  
+This repository uses GitHub Discussions. This is where all discussions should occur. If you have an idea for a feature but don't have complete details on how it should be implemented then please use discussions to discuss these details. Issues are reserved for detailed bug reports and feature requests. If you have questions, basic ideas, or have built something awesome using this repository feel free to use discussions.
 
 ### Issues
 
@@ -38,11 +37,11 @@ If you find an Issue that addresses the problem you're having, please add your o
 
 PRs to my work are always welcome and can be a quick way to get your fix or improvement slated for the next release. In general, PRs should:
 
--   Only fix/add the functionality in question **OR** address wide-spread whitespace/style issues, not both.
--   Add tests for fixed or changed functionality.
--   Address a single concern in the least number of changed lines as possible.
--   Include documentation
--   Be accompanied by a complete Pull Request template (loaded automatically when a PR is created).
+- Only fix/add the functionality in question **OR** address wide-spread whitespace/style issues, not both.
+- Add tests for fixed or changed functionality.
+- Address a single concern in the least number of changed lines as possible.
+- Include documentation
+- Be accompanied by a complete Pull Request template (loaded automatically when a PR is created).
 
 > It's best to open an Issue to discuss your proposal first.
 
@@ -76,6 +75,16 @@ commit, so don't worry about it. All commit messages must be lower case.
 - `perf`: performance optimisation
 - `style`: code style improvements
 - `revert`: reverting a previous commit (only by maintainers)
+
+## Naming Branches
+
+Branches also follow a pattern which is denoted by `<category>/change-label` and
+has the following categories:
+
+- `fix`: bug fixes
+- `refactor`: refactoring existing code
+- `feature`: adding new features or new code in general
+- `docs`: documentation
 
 > Make sure to
 > [sign](https://docs.github.com/en/github/authenticating-to-github/managing-commit-signature-verification)
