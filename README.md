@@ -193,6 +193,14 @@ have complete control over the build steps. This allows me to swap out NextJS
 for anything else, configure custom transformations on files before the static
 generator is ever run, etc.
 
+**Why not just a template repo with NextJS and everything else in one repo?**
+
+Because I wanted to make the source repo for course content as friendly as possible. I didn't want a student or instructor to be pushed away by a complicated repository with tons of config files and source TypeScript modules.
+
+I also wanted this project to be as customizable as possible. Having the action the way it is allows me to extend it later to allow for custom NextJS templates, a completely different workflow, etc.
+
+This decision allowed me to keep my assumptions slim to none and therefore have an easily customisable solution. This is a raw attempt and is not the best way something like this could be built, but it's a positive step towards my vision.
+
 [contribution guide]: CONTRIBUTING.md
 [gitlab's gsoc 2020 project]: https://gitlab.com/gitlab-com/marketing/community-relations/education-program/general/-/issues/88
 [markdown]: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#links
