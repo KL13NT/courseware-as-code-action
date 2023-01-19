@@ -18,7 +18,7 @@
 		"act": "npm run package && act push",
 		"contributors:add": "all-contributors add",
 		"contributors:generate": "all-contributors generate",
-		"release": "npm run release"
+		"release": "release-it"
 	},
 	"repository": {
 		"type": "git",
