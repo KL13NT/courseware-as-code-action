@@ -1,6 +1,6 @@
 {
 	"name": "courseware-as-code-github-action",
-	"version": "0.0.12",
+	"version": "0.0.13",
 	"private": true,
 	"description": "Automate collaborative courseware maintenance and production with ease!",
 	"exports": "./dist/index.js",
