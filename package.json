@@ -1,6 +1,6 @@
 {
 	"name": "courseware-as-code-github-action",
-	"version": "0.0.0",
+	"version": "0.0.10",
 	"private": true,
 	"description": "Automate collaborative courseware maintenance and production with ease!",
 	"exports": "./dist/index.js",
@@ -17,7 +17,8 @@
 		"package": "ncc build src/index.ts --source-map --license licenses.txt -o dist",
 		"act": "npm run package && act push",
 		"contributors:add": "all-contributors add",
-		"contributors:generate": "all-contributors generate"
+		"contributors:generate": "all-contributors generate",
+		"release": "npm run release"
 	},
 	"repository": {
 		"type": "git",
@@ -61,6 +62,7 @@
 		"eslint-plugin-react": "^7.30.1",
 		"js-yaml": "^4.1.0",
 		"prettier": "2.5.1",
+		"release-it": "^15.6.0",
 		"resolve-tspaths": "^0.7.4"
 	}
 }

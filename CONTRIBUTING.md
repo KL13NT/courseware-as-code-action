@@ -3,6 +3,7 @@
 Reading and following these guidelines will help me make the contribution process easy and effective for everyone involved. It also communicates that you agree to respect the time of the developers managing and developing these open source projects. In return, I will reciprocate that respect by addressing your issue, assessing changes, and helping you finalize your pull requests.
 
 - [Code of Conduct](#code-of-conduct)
+- [The Developer Certificate of Origin (DCO)](#the-developer-certificate-of-origin-dco)
 - [Getting Started](#getting-started)
   - [Discussions](#discussions)
   - [Issues](#issues)
@@ -13,6 +14,13 @@ Reading and following these guidelines will help me make the contribution proces
 ## Code of Conduct
 
 I take the open source community seriously and hold myself and other contributors to high standards of communication. By participating and contributing to this project, you agree to uphold the [Code of Conduct](./CODE_OF_CONDUCT.md).
+
+## The Developer Certificate of Origin (DCO)
+
+The Developer Certificate of Origin (DCO) is a lightweight way for contributors
+to certify that they wrote or otherwise have the right to submit the code they
+are contributing to the project. I use this a GitHub bot to verify developer
+signoff on their own commits. The [full DCO text](https://developercertificate.org/) goes into detail.
 
 ## Getting Started
 
