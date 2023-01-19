@@ -81,7 +81,7 @@ project].
   comfort-zone with MDX! 😍
 - Tutorials and examples to get started!
 - Complete control over site metadata using configuration `cac.config.json`.
-- Complete control over site themes through classless CSS. I built it with the
+- Complete control over site themes through [classless] CSS. I built it with the
   most standard way of doing things in HTML to make this easier.
 
 ## Values
@@ -199,3 +199,4 @@ generator is ever run, etc.
 [developers guide]: ./docs/technical.md
 [all contributors]: https://allcontributors.org/docs/en/bot/usage
 [github sponsors]: https://github.com/sponsors/KL13NT
+[classless]: https://github.com/dbohdan/classless-css

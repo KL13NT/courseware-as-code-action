@@ -100,9 +100,11 @@ Each file in the `collections/lectures` directory is rendered using the
 
 #### Styling
 
-I use classless CSS frameworks to change the look of the website. The HTML
+I use [classless] CSS frameworks to change the look of the website. The HTML
 should be as standard as it can get. The decision behind this was to allow users
-to freely change anything with any classless CSS stylesheet.
+to freely change anything with any [classless] CSS stylesheet.
+
+There's a repo on GitHub that lists several [classless] CSS frameworks. Check it out!
 
 [github cloning documentation]: https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository
 [delicious article]: https://deliciousbrains.com/npm-build-script
@@ -110,3 +112,4 @@ to freely change anything with any classless CSS stylesheet.
 [act]: https://github.com/nektos/act
 [nextjs documentation]: https://nextjs.org/docs/
 [actions documentation]: https://docs.github.com/en/actions/creating-actions/creating-a-javascript-action
+[classless]: https://github.com/dbohdan/classless-css
