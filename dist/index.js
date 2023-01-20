@@ -13162,15 +13162,17 @@ try {
 
 "use strict";
 /* harmony export */ __nccwpck_require__.d(__webpack_exports__, {
+/* harmony export */   "Ir": () => (/* binding */ OUTPUT_DIR),
 /* harmony export */   "Vl": () => (/* binding */ LECTURES_DIR),
 /* harmony export */   "Y3": () => (/* binding */ TEMPLATE_COLLECTIONS_DIR),
 /* harmony export */   "ci": () => (/* binding */ TEMPLATE_REPO),
+/* harmony export */   "f$": () => (/* binding */ TEMPLATE_OUTPUT_DIR),
 /* harmony export */   "lg": () => (/* binding */ CONFIG_PATH),
 /* harmony export */   "t9": () => (/* binding */ TEMPLATE_DIR),
 /* harmony export */   "xW": () => (/* binding */ COLLECTIONS_DIR),
 /* harmony export */   "xd": () => (/* binding */ TEMPLATE_CONFIG_PATH)
 /* harmony export */ });
-/* unused harmony exports TEMP_DIR, OUTPUT_DIR, TEMPLATE_OUTPUT_DIR */
+/* unused harmony export TEMP_DIR */
 /**
  * Please don't come after me for the following mess. I know. I KNOW. TRUST ME I
  * KNOW! I am working on a better solution. I promise. I am just trying to get
@@ -19378,15 +19380,11 @@ function run() {
             (0,external_child_process_namespaceObject.execSync)("npm run export", {
                 cwd: constants/* TEMPLATE_DIR */.t9,
             });
-            // logger.info("outputting files to project out directory");
-            // const temp = fs.readdirSync(NEXT_OUT_DIR);
-            // for (const filename of temp) {
-            // 	const from = path.resolve(NEXT_OUT_DIR, filename);
-            // 	const to = path.resolve(OUTPUT_DIR, filename);
-            // 	fs.renameSync(from, to);
-            // }
+            logger.info("copying static assets to output directory");
+            (0,external_fs_.cpSync)(constants/* TEMPLATE_OUTPUT_DIR */.f$, constants/* OUTPUT_DIR */.Ir, {
+                recursive: true,
+            });
             logger.info("build complete");
-            // TODO: move files from '/out' to cwd/out
         }
         catch (error) {
             if (error instanceof Error) {

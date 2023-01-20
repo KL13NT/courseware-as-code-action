@@ -10,6 +10,8 @@ import {
 	TEMPLATE_CONFIG_PATH,
 	COLLECTIONS_DIR,
 	LECTURES_DIR,
+	OUTPUT_DIR,
+	TEMPLATE_OUTPUT_DIR,
 } from "@lib/constants";
 import { downloadAndExtractTemplate } from "@lib/http";
 import { logger } from "@lib/logger";
@@ -59,19 +61,12 @@ async function run(): Promise<void> {
 			cwd: TEMPLATE_DIR,
 		});
 
-		// logger.info("outputting files to project out directory");
-		// const temp = fs.readdirSync(NEXT_OUT_DIR);
-
-		// for (const filename of temp) {
-		// 	const from = path.resolve(NEXT_OUT_DIR, filename);
-		// 	const to = path.resolve(OUTPUT_DIR, filename);
-
-		// 	fs.renameSync(from, to);
-		// }
+		logger.info("copying static assets to output directory");
+		cpSync(TEMPLATE_OUTPUT_DIR, OUTPUT_DIR, {
+			recursive: true,
+		});
 
 		logger.info("build complete");
-
-		// TODO: move files from '/out' to cwd/out
 	} catch (error) {
 		if (error instanceof Error) {
 			logger.error(error.message);
