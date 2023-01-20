@@ -1,4 +1,4 @@
-import { createWriteStream, existsSync, mkdirSync } from "fs";
+import { cpSync, createWriteStream, existsSync, mkdirSync } from "fs";
 import got from "got";
 import tar from "tar";
 import { tmpdir } from "os";
@@ -6,7 +6,7 @@ import { join } from "path";
 import { Stream } from "stream";
 import { promisify } from "util";
 import { TEMPLATE_DIR, TEMPLATE_REPO } from "./constants";
-import { unlink } from "fs/promises";
+import { unlink, rmdir, rm } from "fs/promises";
 
 const pipeline = promisify(Stream.pipeline);
 
@@ -31,7 +31,11 @@ export async function downloadAndExtractTemplate() {
 	await tar.x({
 		file: tempFile,
 		cwd: process.cwd(),
+		noChmod: true,
 	});
 
+	cpSync(TEMPLATE_DIR, process.cwd(), { recursive: true, force: true });
+
 	await unlink(tempFile);
+	await rm(TEMPLATE_DIR, { recursive: true, force: true });
 }

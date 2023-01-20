@@ -13162,17 +13162,11 @@ try {
 
 "use strict";
 /* harmony export */ __nccwpck_require__.d(__webpack_exports__, {
-/* harmony export */   "Ir": () => (/* binding */ OUTPUT_DIR),
 /* harmony export */   "Vl": () => (/* binding */ LECTURES_DIR),
-/* harmony export */   "Y3": () => (/* binding */ TEMPLATE_COLLECTIONS_DIR),
 /* harmony export */   "ci": () => (/* binding */ TEMPLATE_REPO),
-/* harmony export */   "f$": () => (/* binding */ TEMPLATE_OUTPUT_DIR),
-/* harmony export */   "lg": () => (/* binding */ CONFIG_PATH),
-/* harmony export */   "t9": () => (/* binding */ TEMPLATE_DIR),
-/* harmony export */   "xW": () => (/* binding */ COLLECTIONS_DIR),
-/* harmony export */   "xd": () => (/* binding */ TEMPLATE_CONFIG_PATH)
+/* harmony export */   "t9": () => (/* binding */ TEMPLATE_DIR)
 /* harmony export */ });
-/* unused harmony export TEMP_DIR */
+/* unused harmony exports COLLECTIONS_DIR, TEMP_DIR, OUTPUT_DIR, TEMPLATE_OUTPUT_DIR, CONFIG_PATH, TEMPLATE_CONFIG_PATH, TEMPLATE_COLLECTIONS_DIR */
 /**
  * Please don't come after me for the following mess. I know. I KNOW. TRUST ME I
  * KNOW! I am working on a better solution. I promise. I am just trying to get
@@ -13186,10 +13180,10 @@ const LECTURES_DIR = eval(`require('path').join(process.cwd(), 'collections/lect
 const TEMP_DIR = eval(`require('path').join(process.cwd(), '.temp')`);
 const OUTPUT_DIR = eval(`require('path').join(process.cwd(), 'out')`);
 const TEMPLATE_DIR = eval(`require('path').join(process.cwd(), 'courseware-as-code-template-master')`);
-const TEMPLATE_OUTPUT_DIR = eval(`require('path').join('${TEMPLATE_DIR}', 'out')`);
+const TEMPLATE_OUTPUT_DIR = eval(`require('path').join(process.cwd(), 'out')`);
 const CONFIG_PATH = eval(`require('path').join(process.cwd(), 'cac.config.json')`);
-const TEMPLATE_CONFIG_PATH = eval(`require('path').join('${TEMPLATE_DIR}', 'cac.config.json')`);
-const TEMPLATE_COLLECTIONS_DIR = eval(`require("path").join(process.cwd(), "courseware-as-code-template-master/collections")`);
+const TEMPLATE_CONFIG_PATH = eval(`require('path').join(process.cwd(), 'cac.config.json')`);
+const TEMPLATE_COLLECTIONS_DIR = eval(`require("path").join(process.cwd(), "collections")`);
 const TEMPLATE_REPO = "https://codeload.github.com/kl13nt/courseware-as-code-template/tar.gz/master";
 
 
@@ -19310,8 +19304,11 @@ function downloadAndExtractTemplate() {
         yield tar.x({
             file: tempFile,
             cwd: process.cwd(),
+            noChmod: true,
         });
+        (0,external_fs_.cpSync)(constants/* TEMPLATE_DIR */.t9, process.cwd(), { recursive: true, force: true });
         yield (0,promises_namespaceObject.unlink)(tempFile);
+        yield (0,promises_namespaceObject.rm)(constants/* TEMPLATE_DIR */.t9, { recursive: true, force: true });
     });
 }
 
@@ -19352,39 +19349,21 @@ function run() {
     return src_awaiter(this, void 0, void 0, function* () {
         try {
             logger.info("Courseware as code is built with 💖 by Nabil Tharwat. For support visit the GitHub issues page.");
+            logger.info("Starting the build 🚀");
             if (!external_fs_default().existsSync(constants/* LECTURES_DIR */.Vl)) {
                 throw new Error(`Lectures directory does not exist. Please create a directory in the path ${constants/* LECTURES_DIR */.Vl} with markdown files inside.`);
             }
             logger.info("Downloading and extracting the template");
             yield downloadAndExtractTemplate();
-            logger.info("Copying collections directory to template directory");
-            (0,external_fs_.cpSync)(constants/* COLLECTIONS_DIR */.xW, constants/* TEMPLATE_COLLECTIONS_DIR */.Y3, {
-                recursive: true,
-                force: true,
-            });
-            logger.info("Copying config");
-            (0,external_fs_.cpSync)(constants/* CONFIG_PATH */.lg, constants/* TEMPLATE_CONFIG_PATH */.xd, {
-                force: true,
-            });
             logger.info("Installing template npm dependencies");
-            const npmOutput = (0,external_child_process_namespaceObject.execSync)("npm ci --legacy-peer-deps", {
-                cwd: constants/* TEMPLATE_DIR */.t9,
-            }).toString();
+            const npmOutput = (0,external_child_process_namespaceObject.execSync)("npm ci --legacy-peer-deps").toString();
             logger.debug(npmOutput);
             logger.info("Building website");
-            const buildOutput = (0,external_child_process_namespaceObject.execSync)("npx next build", {
-                cwd: constants/* TEMPLATE_DIR */.t9,
-            }).toString();
+            const buildOutput = (0,external_child_process_namespaceObject.execSync)("npx next build").toString();
             logger.debug(buildOutput);
-            logger.info("exporting website");
-            (0,external_child_process_namespaceObject.execSync)("npm run export", {
-                cwd: constants/* TEMPLATE_DIR */.t9,
-            });
-            logger.info("copying static assets to output directory");
-            (0,external_fs_.cpSync)(constants/* TEMPLATE_OUTPUT_DIR */.f$, constants/* OUTPUT_DIR */.Ir, {
-                recursive: true,
-            });
-            logger.info("build complete");
+            logger.info("Exporting website");
+            (0,external_child_process_namespaceObject.execSync)("npm run export");
+            logger.info("Build complete! 🥳");
         }
         catch (error) {
             if (error instanceof Error) {

@@ -19,16 +19,16 @@ export const TEMPLATE_DIR = eval(
 	`require('path').join(process.cwd(), 'courseware-as-code-template-master')`
 );
 export const TEMPLATE_OUTPUT_DIR = eval(
-	`require('path').join('${TEMPLATE_DIR}', 'out')`
+	`require('path').join(process.cwd(), 'out')`
 );
 export const CONFIG_PATH = eval(
 	`require('path').join(process.cwd(), 'cac.config.json')`
 );
 export const TEMPLATE_CONFIG_PATH = eval(
-	`require('path').join('${TEMPLATE_DIR}', 'cac.config.json')`
+	`require('path').join(process.cwd(), 'cac.config.json')`
 );
 export const TEMPLATE_COLLECTIONS_DIR = eval(
-	`require("path").join(process.cwd(), "courseware-as-code-template-master/collections")`
+	`require("path").join(process.cwd(), "collections")`
 );
 export const TEMPLATE_REPO =
 	"https://codeload.github.com/kl13nt/courseware-as-code-template/tar.gz/master";

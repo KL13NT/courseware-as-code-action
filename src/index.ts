@@ -1,18 +1,9 @@
-import fs, { cpSync } from "fs";
+import fs from "fs";
 import { execSync } from "child_process";
 
 import * as core from "@actions/core";
 
-import {
-	TEMPLATE_DIR,
-	TEMPLATE_COLLECTIONS_DIR,
-	CONFIG_PATH,
-	TEMPLATE_CONFIG_PATH,
-	COLLECTIONS_DIR,
-	LECTURES_DIR,
-	OUTPUT_DIR,
-	TEMPLATE_OUTPUT_DIR,
-} from "@lib/constants";
+import { LECTURES_DIR } from "@lib/constants";
 import { downloadAndExtractTemplate } from "@lib/http";
 import { logger } from "@lib/logger";
 
@@ -21,6 +12,7 @@ async function run(): Promise<void> {
 		logger.info(
 			"Courseware as code is built with 💖 by Nabil Tharwat. For support visit the GitHub issues page."
 		);
+		logger.info("Starting the build 🚀");
 
 		if (!fs.existsSync(LECTURES_DIR)) {
 			throw new Error(
@@ -31,42 +23,20 @@ async function run(): Promise<void> {
 		logger.info("Downloading and extracting the template");
 		await downloadAndExtractTemplate();
 
-		logger.info("Copying collections directory to template directory");
-		cpSync(COLLECTIONS_DIR, TEMPLATE_COLLECTIONS_DIR, {
-			recursive: true,
-			force: true,
-		});
-
-		logger.info("Copying config");
-		cpSync(CONFIG_PATH, TEMPLATE_CONFIG_PATH, {
-			force: true,
-		});
-
 		logger.info("Installing template npm dependencies");
-		const npmOutput = execSync("npm ci --legacy-peer-deps", {
-			cwd: TEMPLATE_DIR,
-		}).toString();
+		const npmOutput = execSync("npm ci --legacy-peer-deps").toString();
 
 		logger.debug(npmOutput);
 
 		logger.info("Building website");
-		const buildOutput = execSync("npx next build", {
-			cwd: TEMPLATE_DIR,
-		}).toString();
+		const buildOutput = execSync("npx next build").toString();
 
 		logger.debug(buildOutput);
 
-		logger.info("exporting website");
-		execSync("npm run export", {
-			cwd: TEMPLATE_DIR,
-		});
+		logger.info("Exporting website");
+		execSync("npm run export");
 
-		logger.info("copying static assets to output directory");
-		cpSync(TEMPLATE_OUTPUT_DIR, OUTPUT_DIR, {
-			recursive: true,
-		});
-
-		logger.info("build complete");
+		logger.info("Build complete! 🥳");
 	} catch (error) {
 		if (error instanceof Error) {
 			logger.error(error.message);
