@@ -35,6 +35,17 @@ description: Summarize your lecture in a sentence here
 Lecture content goes here!
 ```
 
+## Adding Media Files
+
+Images, videos, and gifs shouldn't be added to the Git repo of your course.
+Adding media files to the repo will result in its size getting exponentially
+large with every added file and will make contributing difficult.
+
+For now make sure to upload your videos to your favourite hosting service.
+YouTube is a great platform for videos, and Imgur is great for images. Both
+support private (unlisted) media where you can only find said media through a
+provided link.
+
 ## Course Maintainers
 
 As a teacher/course maintainer you'll most probably be responsible for your
