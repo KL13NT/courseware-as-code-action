@@ -15,37 +15,6 @@ contains all input Markdown documents that go into making lectures. Each
 lecture is contained within a single Markdown file, and all you have to do then is
 locate the lecture you wish to contribute to, and simply edit it!
 
-## Creating Lectures
-
-Each lecture is a single Markdown file with frontmatter. Frontmatter is a way to
-identify metadata in Markdown files. Metadata can be anything but CaC takes two
-possible keys: "title", and "description". The title is required. You can leave
-the description empty but make sure the title is sufficient to describe the
-content of the lecture.
-
-Simply create a new file in the `collections/lectures` directory with the
-following contents:
-
-```markdown
----
-title: Lecture title here
-description: Summarize your lecture in a sentence here
----
-
-Lecture content goes here!
-```
-
-## Adding Media Files
-
-Images, videos, and gifs shouldn't be added to the Git repo of your course.
-Adding media files to the repo will result in its size getting exponentially
-large with every added file and will make contributing difficult.
-
-For now make sure to upload your videos to your favourite hosting service.
-YouTube is a great platform for videos, and Imgur is great for images. Both
-support private (unlisted) media where you can only find said media through a
-provided link.
-
 ## Course Maintainers
 
 As a teacher/course maintainer you'll most probably be responsible for your
@@ -84,6 +53,37 @@ action will start off automatically and update the deployed Pages website.
 You can change course name, code, and other variables through the
 `cac.config.json` file present in the repository. Change any of the values and
 commit the changes to have them immediately reflect in the output website.
+
+### Creating Lectures
+
+Each lecture is a single Markdown file with frontmatter. Frontmatter is a way to
+identify metadata in Markdown files. Metadata can be anything but CaC takes two
+possible keys: "title", and "description". The title is required. You can leave
+the description empty but make sure the title is sufficient to describe the
+content of the lecture.
+
+Simply create a new file in the `collections/lectures` directory with the
+following contents:
+
+```markdown
+---
+title: Lecture title here
+description: Summarize your lecture in a sentence here
+---
+
+Lecture content goes here!
+```
+
+### Adding Media Files
+
+Images, videos, and gifs shouldn't be added to the Git repo of your course.
+Adding media files to the repo will result in its size getting exponentially
+large with every added file and will make contributing difficult.
+
+For now make sure to upload your videos to your favourite hosting service.
+YouTube is a great platform for videos, and Imgur is great for images. Both
+support private (unlisted) media where you can only find said media through a
+provided link.
 
 ### Reviewing Pull Requests
 
