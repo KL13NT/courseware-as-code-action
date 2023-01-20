@@ -15,6 +15,26 @@ contains all input Markdown documents that go into making lectures. Each
 lecture is contained within a single Markdown file, and all you have to do then is
 locate the lecture you wish to contribute to, and simply edit it!
 
+## Creating Lectures
+
+Each lecture is a single Markdown file with frontmatter. Frontmatter is a way to
+identify metadata in Markdown files. Metadata can be anything but CaC takes two
+possible keys: "title", and "description". The title is required. You can leave
+the description empty but make sure the title is sufficient to describe the
+content of the lecture.
+
+Simply create a new file in the `collections/lectures` directory with the
+following contents:
+
+```markdown
+---
+title: Lecture title here
+description: Summarize your lecture in a sentence here
+---
+
+Lecture content goes here!
+```
+
 ## Course Maintainers
 
 As a teacher/course maintainer you'll most probably be responsible for your
@@ -33,15 +53,18 @@ to put in an effort towards building a healthy community around your courses.
 
 1. Go to the [template repository]
 2. Click the green "Use this template" and pick "Create a new repository"
-3. Voila!
+3. Go to your course repo settings > Pages (In _Code and automation_)
+4. Select "GitHub Actions" as the _Source_ in _Build and deployment_
+5. Voila!
 
 By then you'll have created a new repository with the default example lectures
-available. Once you make changes (either by editing or deleting an existing
-file, or creating new files) and commit the changes the
-courseware-as-code-action will start off and provide you with a working GitHub
-Pages website. The website will be available at
+available. This will start the action and the output website will be available at
 `https://your_username.github.io/repository_name`. For instance, my example
-project can be visited by going to [https://kl13nt.github.io/courseware-as-code-example](https://kl13nt.github.io/courseware-as-code-example).
+project can be visited by going to
+[https://kl13nt.github.io/courseware-as-code-example](https://kl13nt.github.io/courseware-as-code-example).
+
+When you make changes and commit them the
+action will start off automatically and update the deployed Pages website.
 
 > The template repository has example articles explaining how to do a several
 > things, such as using LaTeX, embedding YouTube videos, and how to use
